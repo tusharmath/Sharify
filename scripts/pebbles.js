@@ -21,7 +21,7 @@ var pebbles = function() {
 
 
 		var getAmountValue = function(user, amount) {
-			return balance[user] === undefined ? t.amount : balance[user] + amount;
+			return balance[user] === undefined ? amount : balance[user] + amount;
 		};
 
 		var userCount = t.paidFor.length;
