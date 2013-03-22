@@ -3,8 +3,8 @@ var pbFormat = function(element) {
 	var _rules = {};
 	_rules.clearExtraSpaces = function(text, keyCode) {
 		return text
-		.replace(/\ *, */g, ", ")
 		.replace(/\ \ */g, " ");
+
 
 	};
 

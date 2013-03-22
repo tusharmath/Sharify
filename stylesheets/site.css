@@ -1,3 +1,26 @@
-body{}
+body
+{
+	font-family:Arial,Liberation Sans,DejaVu Sans,sans-serif
+}
 
-#commandBox{}
+input:focus
+{
+	outline:none
+}
+
+.commandbox input
+{
+	font-size:44px;
+	border-width:8px;
+	width:100%;
+	border:8px solid #c58383;
+	border-radius:8px;
+	padding:4px 10px;
+	color:#8e5aac
+}
+
+.commandbox
+{
+	width:784px;
+	margin:0 auto
+}
