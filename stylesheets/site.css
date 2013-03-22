@@ -24,3 +24,10 @@ input:focus
 	width:784px;
 	margin:0 auto
 }
+
+.sampleText
+{
+	color:#b3b1b1;
+	font-size:12px;
+	margin:8px 4px
+}
