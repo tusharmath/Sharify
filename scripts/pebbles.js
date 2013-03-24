@@ -58,7 +58,7 @@ var pebbles = function() {
 
 		listBalances: _listBalances,
 		listTransfers: _listTransfers
-	},
+	};
 
 
 };

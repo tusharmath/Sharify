@@ -76,7 +76,7 @@ var pbParser = function(element) {
 
 		parse: function() {
 			var text = element.val().toLowerCase();
-			text = text.match(/[a-z|\ *|0-9*]|[\#\,]/g).join("").replace(/\ \ */g, " ");
+			//text = text.match(/[a-z|\ *|0-9*]|[\#\,]/g).join("").replace(/\ \ */g, " ");
 			return _parser(text);
 		}
 	};
