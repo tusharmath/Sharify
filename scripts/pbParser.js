@@ -22,19 +22,44 @@ var pbParser = function(element) {
 
 	};
 
+	var _clean = function(item) {
+
+		var cleanRegex = /[a-z|0-9]*/g;
+		if (item !== undefined) {
+			if (item instanceof Array) {
+				var s = [];
+				j = 0;
+				for (var i = 0; i < item.length; i++) {
+					if (item === undefined) j++;
+					else s[j++] = item[i].match(cleanRegex).join("");
+				}
+				return s;
+
+			} else if (typeof item === "string") {
+				var r = item.match(cleanRegex).join("");
+				if (isNaN(r)) return r;
+				return Number(r);
+			}
+		}
+
+
+
+		return undefined;
+	};
+
 
 
 	var _parser = function(text) {
 		var paidSplit = tokenSplit(text, keys.PAID);
-		var paidBy = paidSplit.left;
+		var paidBy = _clean(paidSplit.left);
 
 		var forSplit = tokenSplit(paidSplit.right, keys.FOR);
-		var amount = forSplit.left;
+		var amount = _clean(forSplit.left);
 		var atSplit = tokenSplit(forSplit.right, "#");
 
-		var paidFor = atSplit.left.split(",");
+		var paidFor = _clean(atSplit.left.split(","));
 
-		var remarks = atSplit.right;
+		var remarks = _clean(atSplit.right);
 		var pbt = new pbTransaction(amount, paidBy, paidFor, remarks);
 
 		pbt.toString = function() {
