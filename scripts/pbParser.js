@@ -32,7 +32,7 @@ var pbParser = function(element) {
 		var amount = forSplit.left;
 		var atSplit = tokenSplit(forSplit.right, "#");
 
-		var paidFor = atSplit.left.split(" ");
+		var paidFor = atSplit.left.split(",");
 
 		var remarks = atSplit.right;
 		var pbt = new pbTransaction(amount, paidBy, paidFor, remarks);
@@ -51,7 +51,7 @@ var pbParser = function(element) {
 
 		parse: function() {
 			var text = element.val().toLowerCase();
-			text = text.match(/[a-z|\ *|0-9*]|\#/g).join("").replace(/\ \ */g, " ");
+			text = text.match(/[a-z|\ *|0-9*]|[\#\,]/g).join("").replace(/\ \ */g, " ");
 			return _parser(text);
 		}
 	};

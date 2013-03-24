@@ -47,14 +47,18 @@ var pebbles = function() {
 
 	};
 
+
+	var _listTransfers = function() {};
 	return {
-		transactions: {
-			add: _addTransaction,
-			remove: _removeTransaction,
-			list: _listTransactions
-		},
-		balances: {
-			list: _listBalances
-		}
-	};
+
+		addTransaction: _addTransaction,
+		removeTransaction: _removeTransaction,
+		listTransactions: _listTransactions,
+
+
+		listBalances: _listBalances,
+		listTransfers: _listTransfers
+	},
+
+
 };
