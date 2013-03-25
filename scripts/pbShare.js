@@ -1,8 +1,9 @@
-var pbShare = function(user, amount, shareType) {
+var pbShare = function(user, share) {
 
-};
-
-pbShare.shareType = {
-	RATIO: "ratio",
-	VALUE: "value"
+	return {
+		//String: User name
+		user: user,
+		//Number: ratio or amount
+		share: share
+	};
 };

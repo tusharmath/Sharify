@@ -1,7 +1,7 @@
 #USE CASES FOR PEBBLES
 
 	Paid 5000 by 
- 		A ,
+ 		A,
   		B * 2, 
   		C 
 	
