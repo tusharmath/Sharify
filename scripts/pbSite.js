@@ -1,4 +1,4 @@
-var element = $("div.commandBox input");
+var element = $("div.commandBox textarea");
 element.focus();
 element.val("a paid 4400 for a, d, w ,s # were woloves");
 //var formatter = new pbFormat(element);

@@ -3,20 +3,21 @@ body
 	font-family:Arial,Liberation Sans,DejaVu Sans,sans-serif
 }
 
-input:focus
+input:focus, textarea:focus
 {
 	outline:none
 }
 
-.commandbox input
+.commandbox textarea
 {
-	font-size:44px;
+	font-size:14px;
 	border-width:8px;
 	width:100%;
 	border:8px solid #c58383;
 	border-radius:8px;
 	padding:4px 10px;
-	color:#8e5aac
+	color:#8e5aac;
+	font-weight:700
 }
 
 .commandbox
