@@ -1,4 +1,4 @@
-var pbPayShare = function(pbShareList, amount) {
+var pbShareValues = function(pbShareList, amount) {
 
 	var pbPayShareItem = function(user, amount) {
 		return {
