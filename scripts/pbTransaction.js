@@ -15,7 +15,7 @@ var pbTransaction = function(shareValuesBy, shareValuesFor, remarks, tags) {
 		return pbt;
 
 	}
-	throw "invalid parameter type.";
+	throw new InvalidParameterTypeExecption();
 
 
 };
