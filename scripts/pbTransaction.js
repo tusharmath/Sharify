@@ -1,21 +1,21 @@
-var pbTransaction = function(amount, paidByShares, paidForShares, remarks, tags) {
+var pbTransaction = function(shareValuesBy, shareValuesFor, remarks, tags) {
 
-	var pbt = {};
+	if (shareValuesFor instanceof pbShareValues && shareValuesBy instanceof pbShareValues) {
 
-	if (typeof amount === "number" && paidByShares instanceof pbShare && paidForShares instanceof pbShare && typeof remarks === "string" && typeof tags === "string") {
+		var pbt = {};
 
 
-		pbt.amount = amount;
-		pbt.paidBy = paidByShares;
-		pbt.paidFor = paidForShares;
+
+		pbt.paidBy = shareValuesBy;
+		pbt.paidFor = shareValuesFor;
 		pbt.remarks = remarks;
 
 		pbt.tags = tags;
 
 		return pbt;
-	}
 
-	throw "invalid creation of transaction object";
+	}
+	throw "invalid parameter type.";
 
 
 };
