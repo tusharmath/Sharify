@@ -1,14 +1,7 @@
 var pbParser = function(element) {
-	var keys = {
-		PAID: "paid",
-		FOR: "for",
-		TO: "to",
-		AND: "and"
 
 
-	};
-
-
+	var keys = pbParser.keys;
 	var tokenSplit = function(string, key) {
 		var tokens = string.split(key);
 		if (tokens.length <= 2) {
@@ -17,7 +10,7 @@ var pbParser = function(element) {
 				right: tokens[1]
 			};
 		} else {
-			throw "keywords have been used for names!";
+			throw "In corect usage of keywords!";
 		}
 
 	};
@@ -63,11 +56,11 @@ var pbParser = function(element) {
 		var pbt = new pbTransaction(amount, paidBy, paidFor, remarks);
 
 		pbt.toString = function() {
+
 			var str = [this.paidBy, keys.PAID, this.amount, keys.FOR];
 			var remarksStr = this.remarks === undefined ? "" : " #" + this.remarks;
 			return str.join(" ") + " " + this.paidFor.join(", ") + remarksStr;
 		};
-
 		return pbt;
 
 	};
@@ -83,4 +76,11 @@ var pbParser = function(element) {
 
 };
 
-var pbSuggest = function() {};
+pbParser.keys = {
+	PAID: "paid",
+	FOR: "for",
+	BY: "by",
+	AND: "and"
+
+
+};
