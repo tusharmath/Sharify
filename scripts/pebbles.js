@@ -13,67 +13,54 @@ var pebbles = function() {
 		return transactions;
 	};
 
-	var _removeTransaction = function(transaction) {
-		transactions = transactions.filter(function(p) {
-			return p != transaction;
-		});
+	var _removeTransaction = function(index) {
+		throw new NotImplementedException();
 	};
 
-	var updateBalance = function() {
-		var getAmountValue = function(user, amount) {
-			return balances[user] === undefined ? amount : balances[user] + amount;
+	var updateBalance = function(payShares, balances) {
+		var getAmountValue = function(payShare) {
+			return balances[payShare.user] === undefined ? payShare.amount : balances[payShare.user] + payShare.amount;
 		};
-
-		for (var i = transactions.length - 1; i >= 0; i--) {
-			var t = transactions[i];
-
-			var userCount = t.paidFor.length;
-			var amountPerPerson = t.amount / userCount;
-			balances[t.paidBy] = getAmountValue(t.paidBy, t.amount);
-			for (var j = 0; j < t.paidFor.length; j++) {
-				var paidFor = t.paidFor[j];
-
-				balances[paidFor] = getAmountValue(paidFor, -amountPerPerson);
-			}
-
+		for (i = 0; i < payShares.length; i++) {
+			var payShare = payShares[i];
+			balances[payShare.user] = getAmountValue(payShare);
 		}
-
-
 
 	};
 
 	var _listBalances = function(tag) {
 
-		var r = [];
-		var balances = [];
-		for (var i = transactions.length - 1; i >= 0; i--) {
-			var t = transactions[i];
-			updateBalance(t, balances);
+		var _balances = [];
+
+		//Get list of transactions for a particular tag
+		var ftrans = transactions.filter(function(p) {
+			return p.tag == tag;
+		});
+
+
+		for (var i = 0; i < ftrans.length; i++) {
+			var ftran = ftrans[i];
+			updateBalance(ftrans.payShareBy, _balances);
+			updateBalance(ftrans.payShareFor, _balances);
 		}
 
-		for (var i in balances) {
-			var b = new pbBalance(i, balances[i]);
-			r.push(b);
-		}
-		return r;
-
+		return _balances;
 	};
 
-	var _isValidBalance = function() {
-		var sum;
-		for (var i in balances) {
-			sum += balances[i];
-		}
+	var _isValidBalance = function(tag) {
+		var sum = 0;
+		listBalances(tag).foreach(function(k) {
+			sum += k;
+		});
 
 		return sum > -1 && sum < 1 ? true : false;
+
+
 	};
 
 
 	var _listTransfers = function() {};
 
-	var _addBalance = function() {};
-
-	var _removeBalance = function() {};
 	return {
 
 		addTransaction: _addTransaction,
@@ -83,8 +70,6 @@ var pebbles = function() {
 
 
 		listBalances: _listBalances,
-		addBalance: _addBalance,
-		removeBalance: _removeBalance,
 
 		isValidBalance: _isValidBalance,
 
