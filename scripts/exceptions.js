@@ -11,3 +11,8 @@ var UserShareNotValid = function() {
 
 	return "Use either * or = for all payers or payees!";
 };
+
+var InvalidBalancesException = function() {
+
+	return "The sum of net assets value of all the participants of a transaction should be ZERO!";
+};

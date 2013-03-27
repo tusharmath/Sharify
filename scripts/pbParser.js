@@ -115,14 +115,25 @@ var pbParser = function(element) {
 			userShares.addShare(userShare.left, userShare.right);
 
 		}
-		return userShares.listShares();
+		return {
+			users: userShares.listShares(),
+			amount: amount
+		};
 
 	};
 
 	var _parser = function(data) {
+		var amount = _clean(data.amount);
+		var payerShares = _createUserShare(data.payers, amount);
+		var payeeShares = _createUserShare(data.payees, -payerShares.amount);
 
-		var payers = _createUserShare(data.payers, _clean(data.amount));
-		var payees = _createUserShare(data.payees, _clean(-data.amount));
+		if (payerShares.amount + payeeShares.amount !== 0) {
+			throw new InvalidBalancesException();
+		}
+
+		var payers = payerShares.users;
+		var payees = payeeShares.users;
+
 		var tag = _clean(data.tag);
 
 		var remarks = _clean(data.remarks);

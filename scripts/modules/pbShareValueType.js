@@ -6,7 +6,7 @@ var pbShareValueType = function() {
 			return _userShareRatioList;
 		},
 		addShare: function(user, amount) {
-			userShareRatioList.push({
+			_userShareRatioList.push({
 				user: user,
 				amount: amount
 			});
