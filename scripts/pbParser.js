@@ -1,7 +1,7 @@
 var pbParser = function(element) {
 
 
-	var keys = pbParser.keys;
+
 	var tokenSplit = function(string, key) {
 		var tokens = string.split(key);
 		if (tokens.length <= 2) {
@@ -17,7 +17,7 @@ var pbParser = function(element) {
 
 	var _clean = function(item) {
 
-		var cleanRegex = /[a-z|0-9]*/g;
+		var cleanRegex = /[a-z|0-9\*\=]*/g;
 		if (item !== undefined) {
 			if (item instanceof Array) {
 				var s = [];
@@ -40,37 +40,82 @@ var pbParser = function(element) {
 		return undefined;
 	};
 
+	var _userShareTokenSplit = function(token) {
 
-
-	var _parser = function(text) {
-		var paidSplit = tokenSplit(text, keys.PAID);
-		var paidBy = _clean(paidSplit.left);
-
-		var forSplit = tokenSplit(paidSplit.right, keys.FOR);
-		var amount = _clean(forSplit.left);
-		var atSplit = tokenSplit(forSplit.right, "#");
-
-		var paidFor = _clean(atSplit.left.split(","));
-
-		var remarks = _clean(atSplit.right);
-		var pbt = new pbTransaction(amount, paidBy, paidFor, remarks);
-
-		pbt.toString = function() {
-
-			var str = [this.paidBy, keys.PAID, this.amount, keys.FOR];
-			var remarksStr = this.remarks === undefined ? "" : " #" + this.remarks;
-			return str.join(" ") + " " + this.paidFor.join(", ") + remarksStr;
+		var _pair = function(left, right, key) {
+			return {
+				left: left,
+				right: right,
+				key: key
+			};
 		};
+
+		var vals = token.split(pbParser.keys.MULTIPLY);
+
+		if (vals.length == 1) {
+			vals = token.split(pbParser.keys.EQUAL);
+			if (vals.length == 1) {
+				return vals[0];
+			} else {
+				return new _pair(vals[0], vals[1], pbParser.keys.EQUAL);
+			}
+		} else {
+			return new _pair(vals[0], vals[1], pbParser.keys.MULTIPLY);
+		}
+
+	};
+
+	var _createUserShare = function(str, amount) {
+		var shareType = {
+			RATIO: 0,
+			VALUE: 1
+		};
+
+		var tokens = str.split(",");
+		var cleanedTokens = _clean(tokens);
+		var type;
+		var userShares;
+		for (var i = cleanedTokens.length - 1; i >= 0; i--) {
+			var token = cleanedTokens[i];
+			var userShare = _createUserShare(token);
+
+			if (type === undefined) {
+
+				type = userShare.key;
+				if (type == pbParser.keys.EQUAL) {
+					userShares = new pbShareValueType();
+				} else {
+					userShares = new pbShareRatioType(amount);
+
+				}
+			} else if (userShare.key == token || userShare.key === null) {
+				userShare.addShare(userShare.left, userShare.right);
+
+			} else {
+				throw new UserShareNotValid();
+			}
+		}
+
+	};
+
+	var _parser = function(data) {
+
+		var payers = _createUserShare(data.payers, data.amount);
+		var payees = _createUserShare(data.payees, data.amount);
+		var tag = data.tag;
+
+		var remarks = data.remarks;
+		var pbt = new pbTransaction(payers, payees, remarks, tag);
 		return pbt;
 
 	};
 	//Should return a transaction type object
 	return {
 
-		parse: function() {
-			var text = element.val().toLowerCase();
-			//text = text.match(/[a-z|\ *|0-9*]|[\#\,]/g).join("").replace(/\ \ */g, " ");
-			return _parser(text);
+		parse: function(data) {
+
+
+			return _parser(data);
 		}
 	};
 
@@ -80,7 +125,9 @@ pbParser.keys = {
 	PAID: "paid",
 	FOR: "for",
 	BY: "by",
-	AND: "and"
+	AND: "and",
+	MULTIPLY: "*",
+	EQUAL: "="
 
 
 };

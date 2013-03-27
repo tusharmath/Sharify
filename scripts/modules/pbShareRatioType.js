@@ -1,5 +1,5 @@
-var pbShareRatioType = function() {
-	var _amount;
+var pbShareRatioType = function(amount) {
+	var _amount = amount;
 	var _userShareRatioList = [];
 	var self = this;
 	return {
@@ -30,9 +30,6 @@ var pbShareRatioType = function() {
 				share: share
 			});
 			return self._userShareRatioList;
-		},
-		setAmount: function(amount) {
-			self._amount = amount;
 		},
 		getAmount: function() {
 			return self._amount;

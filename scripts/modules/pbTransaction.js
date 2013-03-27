@@ -1,4 +1,4 @@
-var pbTransaction = function(shareValuesBy, shareValuesFor, remarks, tags) {
+var pbTransaction = function(shareValuesBy, shareValuesFor, remarks, tag) {
 
 	var pbt = {};
 
@@ -8,7 +8,7 @@ var pbTransaction = function(shareValuesBy, shareValuesFor, remarks, tags) {
 	pbt.paidFor = shareValuesFor;
 	pbt.remarks = remarks;
 
-	pbt.tags = tags;
+	pbt.tag = tag;
 
 	return pbt;
 
