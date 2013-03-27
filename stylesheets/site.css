@@ -3,12 +3,12 @@ body
 	font-family:Arial,Liberation Sans,DejaVu Sans,sans-serif
 }
 
-input:focus,textarea:focus
+input[type=text]:focus,textarea:focus
 {
 	outline:none
 }
 
-.commandbox input,.commandbox textarea
+.commandbox input[type=text],.commandbox textarea
 {
 	font-size:14px;
 	border-width:8px;
