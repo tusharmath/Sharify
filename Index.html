@@ -12,20 +12,19 @@
 					{
 					<div class="main">
 						<div>
-							tag : "<input type="text">",
+							tag : "<input type="text" data-bind="value:tag">",
 						</div>
 						<div>
-							amount : <input type="text">,
+							amount : <input type="text" data-bind="value:amount">,
 						</div>
 						<div>
-							payers : [<input type="text">],
+							payers : [<input type="text" data-bind="value:payers">],
 						</div>
 						<div>
-							payees : [<input type="text">],
+							payees : [<input type="text" data-bind="value:payees">],
 						</div>
-						
 						<div>
-							remarks : "<input type="text">"
+							remarks : "<input type="text" data-bind="value:remarks">"
 						</div>
 					</div>}
 					<div class="sampleText">
@@ -33,13 +32,15 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
+		</div><!--Scripts-->
+		<script src="scripts/lib/jquery-1.9.1.min.js" type="text/javascript">
+</script><script src="scripts/lib/knockout-2.2.1.js" type="text/javascript">
+</script><!-- MODULES-->
 		<script src="scripts/modules/pbBalance.js" type="text/javascript">
 </script><script src="scripts/modules/pbShareValueType.js" type="text/javascript">
 </script><script src="scripts/modules/pbShareRatioType.js" type="text/javascript">
 </script><script src="scripts/modules/pbTransaction.js" type="text/javascript">
-</script><script src="scripts/lib/jquery-1.9.1.min.js" type="text/javascript">
+</script><script src="scripts/modules/commandView.js" type="text/javascript">
 </script><script src="scripts/pbFormat.js" type="text/javascript">
 </script><script src="scripts/pbParser.js" type="text/javascript">
 </script><script src="scripts/pebbles.js" type="text/javascript">
