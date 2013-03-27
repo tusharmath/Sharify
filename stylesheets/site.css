@@ -3,12 +3,12 @@ body
 	font-family:Arial,Liberation Sans,DejaVu Sans,sans-serif
 }
 
-input:focus, textarea:focus
+input:focus,textarea:focus
 {
 	outline:none
 }
 
-.commandbox textarea
+.commandbox input
 {
 	font-size:14px;
 	border-width:8px;
@@ -31,4 +31,9 @@ input:focus, textarea:focus
 	color:#b3b1b1;
 	font-size:12px;
 	margin:8px 4px
+}
+
+.commandbox .main
+{
+	margin-left:50px
 }
