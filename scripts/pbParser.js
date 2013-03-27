@@ -53,7 +53,7 @@ var pbParser = function(element) {
 			};
 		};
 		var m = token.split(/[\*|\=]/g);
-		//var defaultShare = type == shareType.RATIO ? 1 :
+
 		if (m.length == 1) {
 			if (type == shareType.RATIO) {
 				return new _pair(token, 1);
@@ -68,17 +68,18 @@ var pbParser = function(element) {
 	};
 
 	var _getShareType = function(str) {
-		var matches = str.match(/\*|\=/g);
-		if (matches === null) {
+		var matchStar = str.match(/\*/g) === null ? false : true;
+		var matchEqual = str.match(/\=/g) === null ? false : true;
+		if (!matchStar && !matchEqual) {
 			return shareType.RATIO;
-		} else if (matches.length > 1) {
+		} else if (matchStar && matchEqual) {
 			throw new UserShareNotValid();
-		} else if (str.match(/\*/g).length >= 1) {
+		} else if (matchStar) {
 			return shareType.RATIO;
-		} else if (str.match(/\=/g).length >= 1) {
+		} else if (matchEqual) {
 			return shareType.VALUE;
 		}
-		return shareType.RATIO;
+		throw new UserShareNotValid();
 	};
 
 	var _createUserShare = function(str, amount) {
