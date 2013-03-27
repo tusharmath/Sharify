@@ -6,3 +6,8 @@ var InvalidParameterTypeExecption = function() {
 
 	return "An invalid type of paramter was suppied to the calling method!";
 };
+
+var UserShareNotValid = function() {
+
+	return "Use either * or = for all payers or payees!";
+};
