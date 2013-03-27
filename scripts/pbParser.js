@@ -92,6 +92,7 @@ var pbParser = function(element) {
 
 		if (type == shareType.VALUE) {
 			userShares = new pbShareValueType();
+			amount = 0;
 		} else {
 			userShares = new pbShareRatioType(amount);
 
@@ -100,7 +101,7 @@ var pbParser = function(element) {
 			for (var i = cleanedTokens.length - 1; i >= 0; i--) {
 				var token = cleanedTokens[i];
 				var userShare = _userShareTokenSplit(token, type);
-
+				amount += userShare.right;
 				userShares.addShare(userShare.left, userShare.right);
 
 			}
@@ -112,7 +113,7 @@ var pbParser = function(element) {
 	var _parser = function(data) {
 
 		var payers = _createUserShare(data.payers, data.amount);
-		var payees = _createUserShare(data.payees, data.amount);
+		var payees = _createUserShare(data.payees, -data.amount);
 		var tag = data.tag;
 
 		var remarks = data.remarks;

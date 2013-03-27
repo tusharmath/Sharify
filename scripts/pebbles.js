@@ -21,7 +21,7 @@ var pebbles = function() {
 		var getAmountValue = function(payShare) {
 			return balances[payShare.user] === undefined ? payShare.amount : balances[payShare.user] + payShare.amount;
 		};
-		for (i = 0; i < payShares.listShares().length; i++) {
+		for (i = 0; i < payShares.length; i++) {
 			var payShare = payShares[i];
 			balances[payShare.user] = getAmountValue(payShare);
 		}
@@ -40,8 +40,8 @@ var pebbles = function() {
 
 		for (var i = 0; i < ftrans.length; i++) {
 			var ftran = ftrans[i];
-			updateBalance(ftrans.payShareBy, _balances);
-			updateBalance(ftrans.payShareFor, _balances);
+			updateBalance(ftran.payers, _balances);
+			updateBalance(ftran.payees, _balances);
 		}
 
 		return _balances;

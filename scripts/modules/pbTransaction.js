@@ -1,11 +1,11 @@
-var pbTransaction = function(shareValuesBy, shareValuesFor, remarks, tag) {
+var pbTransaction = function(payers, payees, remarks, tag) {
 
 	var pbt = {};
 
 
 
-	pbt.paidBy = shareValuesBy;
-	pbt.paidFor = shareValuesFor;
+	pbt.payers = payers;
+	pbt.payees = payees;
 	pbt.remarks = remarks;
 
 	pbt.tag = tag;

@@ -3,8 +3,12 @@
 //ko.applyBindings(inputView, $(".commandBox")[0]);
 var item = new commandView($(".commandBox")[0]);
 var parser = new pbParser();
-parser.parse(item.data());
 
+// TEST CASE
+var t = parser.parse(item.data());
+var pb = new pebbles();
+pb.addTransaction(t);
+console.log(pb.listBalances("home"));
 
 
 //var parser = new pbParser(data);
