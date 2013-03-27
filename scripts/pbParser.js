@@ -1,5 +1,9 @@
 var pbParser = function(element) {
 
+	var shareType = {
+		RATIO: 0,
+		VALUE: 1
+	};
 
 
 	var tokenSplit = function(string, key) {
@@ -40,61 +44,68 @@ var pbParser = function(element) {
 		return undefined;
 	};
 
-	var _userShareTokenSplit = function(token) {
+	var _userShareTokenSplit = function(token, type) {
 
-		var _pair = function(left, right, key) {
+		var _pair = function(left, right) {
 			return {
 				left: left,
-				right: right,
-				key: key
+				right: right
 			};
 		};
-
-		var vals = token.split(pbParser.keys.MULTIPLY);
-
-		if (vals.length == 1) {
-			vals = token.split(pbParser.keys.EQUAL);
-			if (vals.length == 1) {
-				return vals[0];
+		var m = token.split(/[\*|\=]/g);
+		//var defaultShare = type == shareType.RATIO ? 1 :
+		if (m.length == 1) {
+			if (type == shareType.RATIO) {
+				return new _pair(token, 1);
 			} else {
-				return new _pair(vals[0], vals[1], pbParser.keys.EQUAL);
+				throw new UserShareNotValid();
 			}
 		} else {
-			return new _pair(vals[0], vals[1], pbParser.keys.MULTIPLY);
+
+			return new _pair(m[0], m[1]);
 		}
 
 	};
 
+	var _getShareType = function(str) {
+		var matches = str.match(/\*|\=/g);
+		if (matches === null) {
+			return shareType.RATIO;
+		} else if (matches.length > 1) {
+			throw new UserShareNotValid();
+		} else if (str.match(/\*/g).length >= 1) {
+			return shareType.RATIO;
+		} else if (str.match(/\=/g).length >= 1) {
+			return shareType.VALUE;
+		}
+		return shareType.RATIO;
+	};
+
 	var _createUserShare = function(str, amount) {
-		var shareType = {
-			RATIO: 0,
-			VALUE: 1
-		};
 
 		var tokens = str.split(",");
 		var cleanedTokens = _clean(tokens);
-		var type;
 		var userShares;
-		for (var i = cleanedTokens.length - 1; i >= 0; i--) {
-			var token = cleanedTokens[i];
-			var userShare = _createUserShare(token);
 
-			if (type === undefined) {
 
-				type = userShare.key;
-				if (type == pbParser.keys.EQUAL) {
-					userShares = new pbShareValueType();
-				} else {
-					userShares = new pbShareRatioType(amount);
+		var type = _getShareType(str);
 
-				}
-			} else if (userShare.key == token || userShare.key === null) {
-				userShare.addShare(userShare.left, userShare.right);
+		if (type == shareType.VALUE) {
+			userShares = new pbShareValueType();
+		} else {
+			userShares = new pbShareRatioType(amount);
 
-			} else {
-				throw new UserShareNotValid();
+
+
+			for (var i = cleanedTokens.length - 1; i >= 0; i--) {
+				var token = cleanedTokens[i];
+				var userShare = _userShareTokenSplit(token, type);
+
+				userShares.addShare(userShare.left, userShare.right);
+
 			}
 		}
+		return userShares.listShares();
 
 	};
 
