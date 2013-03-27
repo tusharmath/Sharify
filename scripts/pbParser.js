@@ -126,6 +126,10 @@ var pbParser = function(element) {
 	var _parser = function(data) {
 		var amount = _clean(data.amount);
 		var payerShares = _createUserShare(data.payers, amount);
+		if (amount != payerShares.amount) {
+			throw new InvalidBalancesException();
+		}
+
 		var payeeShares = _createUserShare(data.payees, -payerShares.amount);
 
 		if (payerShares.amount + payeeShares.amount !== 0) {
