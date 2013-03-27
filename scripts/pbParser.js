@@ -89,6 +89,7 @@ var pbParser = function(element) {
 		var tokens = str.split(",");
 		var cleanedTokens = _clean(tokens);
 		var userShares;
+		var negate = amount >= 0 ? 1 : -1;
 
 
 		var type = _getShareType(str);
@@ -110,9 +111,9 @@ var pbParser = function(element) {
 			var token = cleanedTokens[i];
 			var userShare = _userShareTokenSplit(token, type);
 			if (type == shareType.VALUE) {
-				amount += userShare.right;
+				amount += userShare.right * negate;
 			}
-			userShares.addShare(userShare.left, userShare.right);
+			userShares.addShare(userShare.left, userShare.right * negate);
 
 		}
 		return {
