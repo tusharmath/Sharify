@@ -62,7 +62,7 @@ var pbParser = function(element) {
 			}
 		} else {
 
-			return new _pair(m[0], m[1]);
+			return new _pair(m[0], Number(m[1]));
 		}
 
 	};
@@ -93,18 +93,24 @@ var pbParser = function(element) {
 		if (type == shareType.VALUE) {
 			userShares = new pbShareValueType();
 			amount = 0;
+
+
 		} else {
 			userShares = new pbShareRatioType(amount);
 
 
 
-			for (var i = cleanedTokens.length - 1; i >= 0; i--) {
-				var token = cleanedTokens[i];
-				var userShare = _userShareTokenSplit(token, type);
-				amount += userShare.right;
-				userShares.addShare(userShare.left, userShare.right);
+		}
 
+
+		for (var i = cleanedTokens.length - 1; i >= 0; i--) {
+			var token = cleanedTokens[i];
+			var userShare = _userShareTokenSplit(token, type);
+			if (type == shareType.VALUE) {
+				amount += userShare.right;
 			}
+			userShares.addShare(userShare.left, userShare.right);
+
 		}
 		return userShares.listShares();
 
@@ -112,8 +118,8 @@ var pbParser = function(element) {
 
 	var _parser = function(data) {
 
-		var payers = _createUserShare(data.payers, data.amount);
-		var payees = _createUserShare(data.payees, -data.amount);
+		var payers = _createUserShare(data.payers, Number(data.amount));
+		var payees = _createUserShare(data.payees, Number(-data.amount));
 		var tag = data.tag;
 
 		var remarks = data.remarks;
