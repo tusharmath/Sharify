@@ -1,21 +1,15 @@
 var pbTransaction = function(shareValuesBy, shareValuesFor, remarks, tags) {
 
-	if (shareValuesFor instanceof pbShareValues && shareValuesBy instanceof pbShareValues) {
-
-		var pbt = {};
+	var pbt = {};
 
 
 
-		pbt.paidBy = shareValuesBy;
-		pbt.paidFor = shareValuesFor;
-		pbt.remarks = remarks;
+	pbt.paidBy = shareValuesBy;
+	pbt.paidFor = shareValuesFor;
+	pbt.remarks = remarks;
 
-		pbt.tags = tags;
+	pbt.tags = tags;
 
-		return pbt;
-
-	}
-	throw new InvalidParameterTypeExecption();
-
+	return pbt;
 
 };

@@ -1,8 +1,8 @@
-var pbShareValueType = function(user, amount) {
+var pbShareValueType = function() {
 	var _userShareRatioList = [];
 	var self = this;
 	return {
-		listShare: function() {
+		listShares: function() {
 			return _userShareRatioList;
 		},
 		addShare: function(user, amount) {

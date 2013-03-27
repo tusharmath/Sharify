@@ -21,7 +21,7 @@ var pebbles = function() {
 		var getAmountValue = function(payShare) {
 			return balances[payShare.user] === undefined ? payShare.amount : balances[payShare.user] + payShare.amount;
 		};
-		for (i = 0; i < payShares.length; i++) {
+		for (i = 0; i < payShares.listShares().length; i++) {
 			var payShare = payShares[i];
 			balances[payShare.user] = getAmountValue(payShare);
 		}

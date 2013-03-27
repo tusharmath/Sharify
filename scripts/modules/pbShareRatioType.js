@@ -3,8 +3,26 @@ var pbShareRatioType = function() {
 	var _userShareRatioList = [];
 	var self = this;
 	return {
-		listShare: function() {
-			return _userShareRatioList;
+		listShares: function() {
+
+			var totalShare = 0;
+			var result = [];
+			_userShareRatioList.foreach(function(p) {
+				totalShare += p.share;
+			});
+
+			_userShareRatioList.foreach(function(p) {
+
+				var k = {
+					user: p.user,
+					amount: p.baseAmount * p.share / totalShare
+				};
+
+				result.push(k);
+			});
+
+
+			return result;
 		},
 		addShare: function(user, share) {
 			self.push({
