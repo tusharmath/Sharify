@@ -11,6 +11,7 @@
 				<div class="commandBox">
 					{
 					<div class="main">
+						
 						<div>
 							tag : "<input type="text" data-bind="value:tag">",
 						</div>
@@ -18,18 +19,15 @@
 							amount : <input type="text" data-bind="value:amount">,
 						</div>
 						<div>
-							payers : [<input type="text" data-bind="value:payers">],
+							payers : [<textarea rows="2" data-bind="value:payers"></textarea>],
 						</div>
 						<div>
-							payees : [<input type="text" data-bind="value:payees">],
+							payees : [<textarea rows="2" data-bind="value:payees"></textarea>],
 						</div>
 						<div>
 							remarks : "<input type="text" data-bind="value:remarks">"
 						</div>
 					</div>}
-					<div class="sampleText">
-						<span>Eg: dave paid 500 for jude, dave, akira #lunch at Woodstock</span>
-					</div>
 				</div>
 			</div>
 		</div><!--Scripts-->
