@@ -36,6 +36,8 @@ var pbParser = function(element) {
 				var r = item.match(cleanRegex).join("");
 				if (isNaN(r)) return r;
 				return Number(r);
+			} else if (typeof item === "number") {
+				return item;
 			}
 		}
 
@@ -119,11 +121,11 @@ var pbParser = function(element) {
 
 	var _parser = function(data) {
 
-		var payers = _createUserShare(data.payers, Number(data.amount));
-		var payees = _createUserShare(data.payees, Number(-data.amount));
-		var tag = data.tag;
+		var payers = _createUserShare(data.payers, _clean(data.amount));
+		var payees = _createUserShare(data.payees, _clean(-data.amount));
+		var tag = _clean(data.tag);
 
-		var remarks = data.remarks;
+		var remarks = _clean(data.remarks);
 		var pbt = new pbTransaction(payers, payees, remarks, tag);
 		return pbt;
 
