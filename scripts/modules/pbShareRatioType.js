@@ -1,7 +1,7 @@
 var pbShareRatioType = function(amount) {
 	var _amount = amount;
 	var _userShareRatioList = [];
-	
+
 	return {
 		listShares: function() {
 

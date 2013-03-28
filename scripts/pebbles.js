@@ -44,13 +44,22 @@ var pebbles = function() {
 			updateBalance(ftran.payees, _balances);
 		}
 
-		return _balances;
+
+		var userAmount = [];
+		for (var j in _balances) {
+			userAmount.push({
+				user: j,
+				amount: _balances[j]
+			});
+		}
+
+		return userAmount;
 	};
 
 	var _isValidBalance = function(tag) {
 		var sum = 0;
 		listBalances(tag).foreach(function(k) {
-			sum += k;
+			sum += k.amount;
 		});
 
 		return sum > -1 && sum < 1 ? true : false;
@@ -58,8 +67,23 @@ var pebbles = function() {
 
 	};
 
+	var _sortBalances = function(balances) {
 
-	var _listTransfers = function() {};
+		return balances.sort(function(a, b) {
+
+			return a.amount - b.amount;
+
+
+		});
+
+	};
+
+	var _listTransfers = function(tag) {
+		var balances = _listBalances(tag);
+
+		var sBal = _sortBalances(balances);
+
+	};
 
 	return {
 

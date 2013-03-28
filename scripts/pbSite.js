@@ -8,8 +8,8 @@ var parser = new pbParser();
 var t = parser.parse(item.data());
 var pb = new pebbles();
 pb.addTransaction(t);
-console.log(pb.listBalances("home"));
-
+//var balances = pb.listBalances("home");
+var transfers  = pb.listTransfers("home");
 
 //var parser = new pbParser(data);
 //pb = new pebbles();
