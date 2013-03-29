@@ -67,21 +67,8 @@ var pebbles = function() {
 
 	};
 
-	var _sortBalances = function(balances) {
-
-		return balances.sort(function(a, b) {
-
-			return a.amount - b.amount;
-
-
-		});
-
-	};
-
 	var _listTransfers = function(tag) {
 		var balances = _listBalances(tag);
-
-		var sBal = _sortBalances(balances);
 
 	};
 
