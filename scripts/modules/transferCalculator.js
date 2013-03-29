@@ -1,5 +1,5 @@
 var transferCalculator = function(balances) {
-
+	var _permutations = [];
 
 	var swap = function(z, l, j) {
 		var e = z.slice(0);
@@ -8,8 +8,9 @@ var transferCalculator = function(balances) {
 		e[j] = k;
 		return e;
 	};
+
 	var _permu = function(p, index) {
-		log(p);
+		_permutations.push(p);
 
 		for (var i = index; i >= 0; i--) {
 			for (var j = 0; j < i; j++) {
@@ -18,16 +19,8 @@ var transferCalculator = function(balances) {
 				_permu(t, i - 1);
 			}
 		}
-
-
 	};
 
-	var startPerm = function(q) {
-		count = 0;
-		finalr.length = 0;
-		_permu(q, q.length - 1);
-		console.log(finalr);
-	};
 	var _factorial = function(i) {
 		var fact = i;
 		while (i !== 1) {
@@ -37,8 +30,12 @@ var transferCalculator = function(balances) {
 	};
 
 
-	var _getPermutations = function(elements) {
+	var _getPermutations = function(balances) {
 
+		var duplexes = _getDuplexes(balances);
+		_permu(duplexes, duplexes.length - 1);
+
+		return _permutations;
 
 	};
 
@@ -68,26 +65,7 @@ var transferCalculator = function(balances) {
 	};
 
 	return {
-
-		getDuplexes: _getDuplexes
+		getPermutations: _getPermutations
 	};
-
-};
-
-
-
-//var sBal = _sortBalances(balances);
-/*
-1. Get all duplexes where one is pos and one is neg.
-2. Iterate over all permutations  of the duplex combinations.
-
-		*/
-
-var count = 0;
-var finalr = [];
-var log = function(e) {
-	//console.log(count, "-", e.join(""));
-	finalr.push(e);
-	//count++;
 
 };

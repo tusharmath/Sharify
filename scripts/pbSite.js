@@ -10,10 +10,12 @@ var pb = new pebbles();
 pb.addTransaction(t);
 var balances = pb.listBalances("home");
 //console.log(balances);
+setTimeout(function(argument) {
 
-var calc = new transferCalculator();
-var dupe = calc.getDuplexes(balances);
-console.log(dupe);
+	var calc = new transferCalculator();
+	var x = calc.getPermutations(balances);
+	console.log(x.length);
+}, 500);
 //var transfers  = pb.listTransfers("home");
 
 //var parser = new pbParser(data);
