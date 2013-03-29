@@ -10,12 +10,15 @@ var pb = new pebbles();
 pb.addTransaction(t);
 var balances = pb.listBalances("home");
 //console.log(balances);
-setTimeout(function(argument) {
 
-	var calc = new transferCalculator();
-	var x = calc.getPermutations(balances);
-	console.log(x.length);
-}, 500);
+var worker = new Worker('scripts/modules/transferCalculator.js');
+
+worker.addEventListener('message', function(e) {
+	console.log('Worker said: ', e.data);
+}, false);
+
+worker.postMessage(balances);
+
 //var transfers  = pb.listTransfers("home");
 
 //var parser = new pbParser(data);

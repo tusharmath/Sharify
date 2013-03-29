@@ -69,3 +69,12 @@ var transferCalculator = function(balances) {
 	};
 
 };
+
+var calc = new transferCalculator();
+
+this.addEventListener('message', function(e) {
+
+	var x = calc.getPermutations(e.data);
+
+	this.postMessage(x.length);
+}, false);
