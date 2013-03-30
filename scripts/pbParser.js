@@ -60,11 +60,11 @@ var pbParser = function(element) {
 			if (type == shareType.RATIO) {
 				return new _pair(token, 1);
 			} else {
-				throw new UserShareNotValid();
+				throw UserShareNotValid();
 			}
 		} else {
 
-			return new _pair(m[0], Number(m[1]));
+			return _pair(m[0], Number(m[1]));
 		}
 
 	};
@@ -75,13 +75,13 @@ var pbParser = function(element) {
 		if (!matchStar && !matchEqual) {
 			return shareType.RATIO;
 		} else if (matchStar && matchEqual) {
-			throw new UserShareNotValid();
+			throw UserShareNotValid();
 		} else if (matchStar) {
 			return shareType.RATIO;
 		} else if (matchEqual) {
 			return shareType.VALUE;
 		}
-		throw new UserShareNotValid();
+		throw UserShareNotValid();
 	};
 
 	var _createUserShare = function(str, amount) {
@@ -127,13 +127,13 @@ var pbParser = function(element) {
 		var amount = _clean(data.amount);
 		var payerShares = _createUserShare(data.payers, amount);
 		if (amount != payerShares.amount) {
-			throw new InvalidBalancesException();
+			throw InvalidBalancesException();
 		}
 
 		var payeeShares = _createUserShare(data.payees, -payerShares.amount);
 
 		if (payerShares.amount + payeeShares.amount !== 0) {
-			throw new InvalidBalancesException();
+			throw InvalidBalancesException();
 		}
 
 		var payers = payerShares.users;

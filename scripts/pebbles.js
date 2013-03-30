@@ -14,7 +14,7 @@ var pebbles = function() {
 	};
 
 	var _removeTransaction = function(index) {
-		throw new NotImplementedException();
+		throw  NotImplementedException();
 	};
 
 	var updateBalance = function(payShares, balances) {

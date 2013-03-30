@@ -7,7 +7,7 @@ var pbWorker = function(worker) {
 
 	var _intCallback = function(e) {
 		if (_callBack === undefined) {
-			throw new CallbackNotDefinedException();
+			throw CallbackNotDefinedException();
 		}
 		_callBack(e.data);
 

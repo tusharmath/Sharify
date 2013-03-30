@@ -9,6 +9,42 @@ var t = parser.parse(item.data());
 var pb = new pebbles();
 pb.addTransaction(t);
 var balances = pb.listBalances("home");
+/*
+var balances = [{
+	user: "a",
+	amount: -10
+}, {
+	user: "b",
+	amount: -6
+}, {
+	user: "c",
+	amount: -5
+}, {
+	user: "d",
+	amount: -3
+}, {
+	user: "e",
+	amount: -1
+}, {
+	user: "f",
+	amount: 2
+}, {
+	user: "g",
+	amount: 4
+}, {
+	user: "h",
+	amount: 5
+}, {
+	user: "i",
+	amount: 7
+}, {
+	user: "k",
+	amount: 7
+}
+
+];*/
+
+
 //console.log(balances);
 
 var calc = new pbWorker(pbWorker.Workers.TRANSFER_CALCULATOR);
