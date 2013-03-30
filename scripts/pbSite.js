@@ -11,13 +11,13 @@ pb.addTransaction(t);
 var balances = pb.listBalances("home");
 //console.log(balances);
 
-var worker = new Worker('scripts/modules/transferCalculator.js');
+var calc = new pbWorker(pbWorker.Workers.TRANSFER_CALCULATOR);
 
-worker.addEventListener('message', function(e) {
-	console.log('Worker said: ', e.data);
-}, false);
+calc.execute(balances, function(data) {
+	console.log(data);
 
-worker.postMessage(balances);
+});
+
 
 //var transfers  = pb.listTransfers("home");
 
