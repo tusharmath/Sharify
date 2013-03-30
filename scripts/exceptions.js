@@ -16,3 +16,8 @@ var InvalidBalancesException = function() {
 
 	return "The sum of net assets value of all the participants of a transaction should be ZERO!";
 };
+
+var CallbackNotDefinedException = function(){
+
+	return "The method call expects a callback parameter which was not set before calling!";
+}
