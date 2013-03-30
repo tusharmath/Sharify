@@ -1,5 +1,18 @@
 var transferCalculator = function(balances) {
 	var _permutations = [];
+	var maxPerms;
+	var _updateStatus = function() {
+
+		var perc = Number((5 / 100 * maxPerms).toFixed());
+
+		var count = _permutations.length;
+		if (count % perc === 0) {
+			var msg = (count * 100 / maxPerms).toString() + "% complete";
+			self.postMessage({
+				status: msg
+			});
+		}
+	};
 
 	var swap = function(z, l, j) {
 		var e = z.slice(0);
@@ -11,6 +24,8 @@ var transferCalculator = function(balances) {
 
 	var _permu = function(p, index) {
 		_permutations.push(p);
+
+		_updateStatus();
 
 		for (var i = index; i >= 0; i--) {
 			for (var j = 0; j < i; j++) {
@@ -49,6 +64,8 @@ var transferCalculator = function(balances) {
 		var payees = balances.filter(function(p) {
 			return p.amount < 0;
 		});
+
+		maxPerms = _factorial(payers.length * payees.length);
 
 		for (var i = payers.length - 1; i >= 0; i--) {
 			var payer = payers[i];
@@ -177,12 +194,15 @@ var transferCalculator = function(balances) {
 	};
 
 };
-
+var self = this;
 var calc = new transferCalculator();
 
 this.addEventListener('message', function(e) {
 
 	var x = calc.solve(e.data);
 
-	this.postMessage(x);
+	self.postMessage({
+		status: "complete",
+		data: x
+	});
 }, false);
