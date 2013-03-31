@@ -25,9 +25,9 @@ app.set('views', __dirname + '/src/views');
 // (although you can still mix and match)
 app.set('view engine', 'jade');
 
-app.get('/', function(req, res){
-  res.render('index');
+app.get('/', function(req, res) {
+	res.render('index');
 });
 
-app.listen(3000);
-console.log('Express app started on port 3000');
+app.listen(process.env.PORT || 3000);
+console.log('Express app started on port ' + process.env.PORT);
