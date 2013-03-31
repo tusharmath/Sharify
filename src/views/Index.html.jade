@@ -1,0 +1,51 @@
+html
+  head
+    title
+      | Pebbles
+    link(rel='stylesheet', type='text/css', href='stylesheets/site.css')
+  body
+    div
+      div
+        .commandBox
+          | {
+          .main
+            div
+              | tag : "
+              input(type='text', data-bind='value:tag')
+              | ",
+            div
+              | amount :
+              input(type='text', data-bind='value:amount')
+              | ,
+            div
+              | payers : [
+              textarea(rows='2', data-bind='value:payers')
+              | ],
+            div
+              | payees : [
+              textarea(rows='2', data-bind='value:payees')
+              | ],
+            div
+              | remarks : "
+              input(type='text', data-bind='value:remarks')
+              | "
+          | }
+    //
+      LIBRARY
+    script(src='scripts/lib/jquery-1.9.1.min.js', type='text/javascript')
+    script(src='scripts/lib/knockout-2.2.1.js', type='text/javascript')
+    //
+       MODULES
+    script(src='scripts/modules/pbShareValueType.js', type='text/javascript')
+    script(src='scripts/modules/pbShareRatioType.js', type='text/javascript')
+    script(src='scripts/modules/pbTransaction.js', type='text/javascript')
+    script(src='scripts/modules/pbWorker.js', type='text/javascript')
+    //
+      VIEWMODELS
+    script(src='scripts/viewmodels/commandView.js', type='text/javascript')
+    script(src='scripts/pbParser.js', type='text/javascript')
+    script(src='scripts/pebbles.js', type='text/javascript')
+    //
+       LAST LOADED 
+    script(src='scripts/pbExceptions.js', type='text/javascript')
+    script(src='scripts/pbSite.js', type='text/javascript')
