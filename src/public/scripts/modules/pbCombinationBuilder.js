@@ -1,6 +1,12 @@
 var pbCombinationBuilder = function(list, length) {
 
-
+	if (list instanceof Array === false) {
+		var tlist = [];
+		for (var i in list) {
+			tlist.push(i);
+		}
+		list = tlist;
+	}
 
 	var _binArray = [];
 
