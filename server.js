@@ -30,6 +30,6 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 app.listen(port);
 console.log('Express app started on port ' + port);
