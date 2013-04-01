@@ -1,17 +1,17 @@
 var pbCombinationBuilder = function(list, length) {
 
-	var _list = list;
-	var _index = 0;
+
+
 	var _binArray = [];
 
 
-	_list.forEach(function(a) {
+	list.forEach(function(a) {
 		_binArray.push(0);
 	});
 
 	var _incval = function(list, index) {
 		if (index == list.length) {
-			return;
+			return list;
 		}
 
 		if (list[index] === 0) {
@@ -19,7 +19,7 @@ var pbCombinationBuilder = function(list, length) {
 			return list;
 		} else {
 			list[index] = 0;
-			return _incval(list, index);
+			return _incval(list, index + 1);
 		}
 	};
 
@@ -33,27 +33,32 @@ var pbCombinationBuilder = function(list, length) {
 
 
 
-	var _next = function() {
-
+	var _list = function() {
 		var _comb = [];
-		for (var i = _binArray.length - 1; i >= 0; i--) {
-			if (_binArray[i] == 1) {
-				_comb.push(list[i]);
+
+		do {
+
+			var _temp = [];
+			for (var i = _binArray.length - 1; i >= 0; i--) {
+				if (_binArray[i] == 1) {
+					_temp.push(list[i]);
+				}
 			}
 
-		}
-
-		if (_index == _binArray.length) return null;
-		else {
+			if (_temp.length == length) {
+				_comb.push(_temp);
+			}
 			_incval(_binArray, 0);
-			return _comb;
-		}
+
+		} while (_sum() !== 0);
+
+		return _comb;
 
 	};
 
 
 	return {
-		next: _next
+		list: _list
 
 	};
 };
