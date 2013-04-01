@@ -1,5 +1,6 @@
-var pbTransfers = function() {
-	var _transfers = [];
+var pbTransfers = function(transfersOld) {
+
+	var _transfers = transfersOld.slice(0, transfersOld.length);
 
 	var transfer = function(from, to, amount) {
 

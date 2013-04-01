@@ -1,9 +1,6 @@
 {
-	"folders":
-	[
-		{
-			"path": "/Users/tusharmathur/Pebbles",
-			"folder_exclude_patterns": ["node_modules"]
-		}
-	]
+	"folders": [{
+		"path": "/Users/tusharmathur/Pebbles",
+		"folder_exclude_patterns": ["node_modules"]
+	}]
 }
