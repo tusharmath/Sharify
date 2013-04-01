@@ -4,16 +4,17 @@
 
 var express = require('express');
 
-// Path to our public directory
 
-var pub = __dirname + '/src';
+
+
 console.log("dir name", __dirname);
 
 // setup middleware
 
 var app = express();
-app.use(app.router);
-app.use(express.static(pub));
+//app.use(app.router);
+app.use(express.static(__dirname + "/src/public"));
+
 app.use(express.errorHandler());
 
 // Optional since express defaults to CWD/views
@@ -29,5 +30,6 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
-app.listen(process.env.PORT || 3000);
-console.log('Express app started on port ' + process.env.PORT);
+var port = process.env.PORT || 8080;
+app.listen(port);
+console.log('Express app started on port ' + port);
