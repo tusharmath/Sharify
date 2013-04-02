@@ -94,28 +94,20 @@ var pbTransferCalculator = function() {
 			var combinationsFound = false;
 			for (var payee in bkeys.payees) {
 
-				//Get the combinations of payers whos sum of amounts is equal to payee.
 				var payerCombinations = _getCombs(bkeys.payees[payee], combLength, bkeys);
 
-				/*
-			Now - add transfers for each combination and set the balance as 0 for them.
-			
-			for all the combinations create a new transfer list containing the previuos transfers.
 
-			call the calc function again with the new transfers for each transfer and for each payer and payee.
-			*/
 
-				if (payerCombinations.length > 0) {
+				for (var i = payerCombinations.length - 1; i >= 0; i--) {
 					combinationsFound = true;
-					for (var i = payerCombinations.length - 1; i >= 0; i--) {
-						var payerCombination = payerCombinations[i];
-						//var tnew = new pbTransfers(transfers);
+					var payerCombination = payerCombinations[i];
 
-						var x = _createTransfers(payee, payerCombination, bkeys, transfers);
-						_calc(x.transfers, x.bkeys, combLength + 1);
 
-					}
+					var x = _createTransfers(payee, payerCombination, bkeys, transfers);
+					_calc(x.transfers, x.bkeys, combLength + 1);
+
 				}
+
 			}
 
 			if (combinationsFound === false) {
