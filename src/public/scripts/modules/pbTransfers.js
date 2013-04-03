@@ -14,7 +14,7 @@ var pbTransfers = function(transfersOld) {
 	var _add = function(from, to) {
 		var t;
 		if (from.amount + to.amount === 0) {
-			t = new transfer(from.user, to.user, from.amount);
+			t = new transfer(from.user, to.user, -from.amount);
 
 
 			from.amount = 0;

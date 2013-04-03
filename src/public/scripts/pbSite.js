@@ -9,6 +9,8 @@ var t = parser.parse(item.data());
 var pb = new pebbles();
 pb.addTransaction(t);
 var balances = pb.listBalances("home");
+//17+13+9+6+3 = 2+4+5+813+16
+
 /*
 var balances = [{
 	user: "a",
@@ -38,22 +40,24 @@ var balances = [{
 	user: "i",
 	amount: 7
 }, {
-	user: "k",
+	user: "j",
 	amount: 7
 }
 
-];*/
-
+];
+*/
+var calc = new pbTransferCalculator();
+calc.solve(balances);
 
 //console.log(balances);
-
+/*
 var calc = new pbWorker(pbWorker.Workers.TRANSFER_CALCULATOR);
 
 calc.execute(balances, function(data) {
 	console.log(data);
 
 });
-
+*/
 
 //var transfers  = pb.listTransfers("home");
 
