@@ -1,7 +1,7 @@
 body
 {
 	font-family:Arial,Liberation Sans,DejaVu Sans,sans-serif;
-	font-size: 14px;
+	font-size:14px
 }
 
 input[type=text]:focus,textarea:focus
@@ -12,7 +12,6 @@ input[type=text]:focus,textarea:focus
 .commandbox input[type=text],.commandbox textarea
 {
 	font-size:14px;
-	
 	width:100%;
 	border:2px solid #c58383;
 	border-radius:4px;
@@ -28,8 +27,9 @@ input[type=text]:focus,textarea:focus
 	margin:0 auto
 }
 
-.commandbox .command{
-	margin: 12px 0px;
+.commandbox .command
+{
+	margin:12px 0
 }
 
 .info-text
@@ -39,23 +39,23 @@ input[type=text]:focus,textarea:focus
 	margin:8px 4px
 }
 
-
 .main-button
 {
-	background-color: rgb(109, 104, 214);
+	background-color:#6d68d6;
 	color:#e5e2fc;
 	padding:8px 32px;
 	border-radius:4px;
 	border:2px solid #3f21b9;
 	float:right;
-	margin:0;
+	margin:0
 }
 
 .main-button:active
 {
-	background-color:#6863db
+	background-color:rgb(90, 86, 182)
 }
 
-ul, ol {
-	margin: 0
+ul,ol
+{
+	margin:0
 }

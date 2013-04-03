@@ -1,48 +1,24 @@
-#USE CASES FOR PEBBLES
+~VERSION 1
+1. Create complete user interface.
+2. CRUD features.
 
-	Paid 5000 by 
- 		A,
-  		B * 2, 
-  		C 
-	
-	for
-		A, 
-		B * 2, 
-		C * 2, 
-		D, 
-		E * 2, 
-		F * 2, 
-		G, 
-		I 
-
-	#Tagname:remarks
-
-
- 	Paid by 
- 		A = 300,
-  		B = 200, 
-  		C = 100 
-	
-	for
-		A = 234, 
-		B = 234, 
-		C = 3012, 
-		D = 123, 
-		E = 2+123, 
-		F = 400+240-200, 
-		G = 123, 
-		I = 1235 
-
-	#Tagname:remarks
+~VERSION 1.1
+1. All scripts should be concatinated and minified.
+2. Offline support should be available on production instances.
+3. Build env should be created.
+4. User interface should show net assets values & suggested transfers.
+5. Email report.
+6. Feedback on UI.
+7. Enable Caching on Production env.
+8. Use local storage to save data.
+9. Main icon for the application.
 
 
 
-
-
-
-
-
-
-
-
-
+~VERSION 2
+1. Publish all transactions.
+2. Email a report
+3. Option of donations
+4. Add google analytics
+5. Buy a domain
+6. Add amazing styles.
