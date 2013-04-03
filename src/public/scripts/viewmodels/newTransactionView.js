@@ -1,6 +1,6 @@
-var newTransactionView = function(element, parser, callback) {
+var newTransactionView = function(element, callback) {
 
-	var _parser = parser;
+	var _parser = new pbParser();
 	var _addButton = function() {
 
 		var t = ko.toJS(this);
