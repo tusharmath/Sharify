@@ -30,7 +30,7 @@ html
               | remarks :
               span.info-text Add some information about the transaction.
               input(type='text', data-bind='value:remarks')
-            input.main-button#add-button(type='button', value='Add')  
+            input.main-button(type='button', value='Add', data-bind='click : addButton')  
     //
       LIBRARY
     script(src='scripts/lib/jquery-1.9.1.min.js', type='text/javascript')
@@ -47,7 +47,7 @@ html
     script(src='scripts/modules/pbArray.js', type='text/javascript')
     //
       VIEWMODELS
-    script(src='scripts/viewmodels/commandView.js', type='text/javascript')
+    script(src='scripts/viewmodels/newTransactionView.js', type='text/javascript')
     script(src='scripts/pbParser.js', type='text/javascript')
     script(src='scripts/pebbles.js', type='text/javascript')
     //

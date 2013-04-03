@@ -1,4 +1,4 @@
-var pbParser = function(element) {
+var pbParser = function() {
 
 	var shareType = {
 		RATIO: 0,
