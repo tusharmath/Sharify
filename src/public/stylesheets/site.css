@@ -1,6 +1,7 @@
 body
 {
-	font-family:Arial,Liberation Sans,DejaVu Sans,sans-serif
+	font-family:Arial,Liberation Sans,DejaVu Sans,sans-serif;
+	font-size: 14px;
 }
 
 input[type=text]:focus,textarea:focus
@@ -13,7 +14,7 @@ input[type=text]:focus,textarea:focus
 	font-size:14px;
 	
 	width:100%;
-	border:4px solid #c58383;
+	border:2px solid #c58383;
 	border-radius:4px;
 	padding:4px 10px;
 	color:#8e5aac;
@@ -27,6 +28,10 @@ input[type=text]:focus,textarea:focus
 	margin:0 auto
 }
 
+.commandbox .command{
+	margin: 12px 0px;
+}
+
 .info-text
 {
 	color:#b3b1b1;
@@ -34,10 +39,6 @@ input[type=text]:focus,textarea:focus
 	margin:8px 4px
 }
 
-.commandbox .main
-{
-	margin-left:50px
-}
 
 .main-button
 {
@@ -46,10 +47,15 @@ input[type=text]:focus,textarea:focus
 	padding:8px 32px;
 	border-radius:4px;
 	border:2px solid #3f21b9;
-	float:right
+	float:right;
+	margin:0;
 }
 
 .main-button:active
 {
 	background-color:#6863db
+}
+
+ul, ol {
+	margin: 0
 }

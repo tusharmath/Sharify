@@ -7,30 +7,30 @@ html
     div
       div
         .commandBox
-          | {
-          .main
-            div
-              | tag : "
+            div.command
+              | tag :
+              span.info-text group transactions by tags for eg: home, work, friends, office-party etc.
               input(type='text', data-bind='value:tag')
-              | ",
-            div
+            div.command
               | amount :
+              span.info-text Specify the total amount for the transaction for eg: 600
               input(type='text', data-bind='value:amount')
-              | ,
-            div
-              | payers : [
+            div.command
+              | payers :
+              span.info-text Specify how the total amount is distributed amongst the users for eg:
+                ol
+                  li a = 100, b = 200, c = 300
+                  li a, b * 2, c * 3
               textarea(rows='2', data-bind='value:payers')
-              | ],
-            div
-              | payees : [
+            div.command
+              | payees : 
+              span.info-text Same as payers.
               textarea(rows='2', data-bind='value:payees')
-              | ],
-            div
-              | remarks : "
+            div.command
+              | remarks :
+              span.info-text Add some information about the transaction.
               input(type='text', data-bind='value:remarks')
-              | "
-          | }
-          input.main-button#add-button(type='button', value='Add')  
+            input.main-button#add-button(type='button', value='Add')  
     //
       LIBRARY
     script(src='scripts/lib/jquery-1.9.1.min.js', type='text/javascript')
