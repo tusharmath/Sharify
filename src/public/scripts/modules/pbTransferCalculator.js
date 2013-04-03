@@ -1,166 +1,101 @@
 var pbTransferCalculator = function() {
-	var _transfersList = [];
+	_finalTransfers = [];
+
+	var minTransferCount = 0;
 
 
 
-	var _getCombs = function(amount, length, bkeys) {
-		var payers = bkeys.payers;
+	var _addTransfer = function(payees, payers) {
+		
 
+		var _transfers = new pbTransfers();
+		var i = 0,
+			j = 0;
+		var from, to;
 
-		var combs = new pbCombinationBuilder(payers, length);
-		return combs.list().filter(function(p) {
-			var sum = 0;
+		var _payees = $.extend(true, [], payees);
+		var _payers = $.extend(true, [], payers);
 
-			p.forEach(function(q) {
-				sum += payers[q];
-			});
+		do {
 
-			return sum == -amount;
-		});
-	};
+			from = _payees[i];
+			to = _payers[j];
 
-	var _addTransfers = function(comb) {
+			if (_transfers.list().length >= minTransferCount) {
+				return;
+			} else {
+				_transfers.add(from, to);
+			}
 
+			if (from.amount === 0) {
+				i++;
+			}
 
+			if (to.amount === 0) {
+				j++;
+			}
 
-	};
+		} while (i != _payees.length);
 
-	var _getAmount = function(bkeys, payee, payer) {
-		var payeeAmount = bkeys.payees[payee];
-		var payerAmount = bkeys.payers[payer];
-
-		var sum = payerAmount + payeeAmount;
-
-		if (sum === 0) {
-			return payerAmount;
-		} else if (sum > 0) {
-			return -payeeAmount;
-		} else if (sum < 0) {
-			return payerAmount;
+		var items = _transfers.list();
+		if (items.length < minTransferCount) {
+			minTransferCount = items.length;
+			_finalTransfers= items;
 		}
+
 	};
 
-	var _createTransfers = function(payee, payerCombination, bkeys, oldTransfers) {
+	var _solve = function(balances) {
+		var bKey = _dichotomizer(balances);
+		minTransferCount = bKey.payers.length + bKey.payers.length - 1;
 
+		var payees = new pbArray(bKey.payees);
 
-		var _transfers = oldTransfers;
-		var _bkeys = {};
+		do {
 
-		_bkeys = $.extend(true, {}, bkeys);
+			var payers = new pbArray(bKey.payers);
+			do {
 
+				_addTransfer(payees, payers);
+				payers = payers.rotateLeft();
 
+			} while (payers !== null);
 
-		payerCombination.forEach(function(payer) {
+			payees = payees.rotateLeft();
 
-			var _amount = _getAmount(bkeys, payee, payer);
-
-			_transfers.push({
-				from: payee,
-				to: payer,
-				amount: _amount
-			});
-
-			delete _bkeys.payers[payer];
-		});
-		delete _bkeys.payees[payee];
-
-
-		return {
-
-			transfers: _transfers,
-			bkeys: _bkeys
-
-		};
-	};
-
-	var _bkeysIsEmpty = function(bkeys) {
-		return Object.keys(bkeys.payers).length === 0 && Object.keys(bkeys.payers).length === 0;
+		} while (payees !== null);
 
 	};
 
 
 
-	var _calc = function(transfers, bkeys, combLength) {
-		//For all the payees 
-
-		if (_bkeysIsEmpty(bkeys) || combLength > Object.keys(bkeys.payers).length) {
-			if (transfers.length > 0) {
-				_transfersList.push({
-					transfers: transfers,
-					bkeys: bkeys
-				});
-			}
-		} else {
-			var combinationsFound = false;
-			for (var payee in bkeys.payees) {
-
-				var payerCombinations = _getCombs(bkeys.payees[payee], combLength, bkeys);
-
-
-
-				for (var i = payerCombinations.length - 1; i >= 0; i--) {
-					combinationsFound = true;
-					var payerCombination = payerCombinations[i];
-
-
-					var x = _createTransfers(payee, payerCombination, bkeys, transfers);
-					_calc(x.transfers, x.bkeys, combLength + 1);
-
-				}
-
-			}
-
-			if (combinationsFound === false) {
-				_calc(transfers, bkeys, combLength + 1);
-			}
+	var _factorial = function(i) {
+		var fact = i;
+		while (i !== 1) {
+			fact *= --i;
 		}
+		return fact;
 	};
-
-
 
 	var _dichotomizer = function(balances) {
 
-		var payees = {}, payers = {};
+		var payees = [],
+			payers = [];
+
 
 
 		balances.forEach(function(b) {
 			if (b.amount > 0) {
-				payers[b.user] = b.amount;
+				payers.push(b);
 			} else if (b.amount < 0) {
-				payees[b.user] = b.amount;
+				payees.push(b);
 			}
-
 		});
 
 		return {
 			payers: payers,
 			payees: payees
 		};
-	};
-
-
-
-	var _solve = function(balances) {
-		var bkeys = _dichotomizer(balances);
-		_calc([], bkeys, 1);
-
-		//TODO:LOGGER to be removed
-		var minlength = Object.keys(bkeys.payers).length * Object.keys(bkeys.payers).length;
-
-		_transfersList.forEach(function(p) {
-			console.log(p.transfers.length);
-
-		});
-
-		_transfersList.forEach(function(p) {
-			if (p.transfers.length == minlength) console.log(p.transfers.length);
-
-
-
-		});
-
-
-
 	};
 
 	return {

@@ -1,5 +1,5 @@
 var pbArray = function(arr, count) {
-	var _arr = arr.slice(0, arr.length);
+	var _arr = arr.slice(0);
 	count = count === undefined ? 0 : count + 1;
 	var _rotateLeft = function() {
 		if (count == _arr.length) return null;
