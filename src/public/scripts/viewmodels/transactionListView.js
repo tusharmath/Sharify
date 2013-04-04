@@ -15,29 +15,15 @@ var transactionListView = function(callback) {
 
 
 	ko.applyBindings(_model, element);
-	
 
-	var _convertSharesToString = function(items) {
 
-		var _items = [];
-		for (var i = items.length - 1; i >= 0; i--) {
-			var item = items[i];
-			_items.push(item.user + " = " + item.amount);
 
-		}
-		return _items.join(", ");
-	};
+	var _add = function(pbTransaction) {
 
-	var _add = function(trn) {
-		trn.amount = 0;
-		trn.payers.forEach(function(u) {
-			trn.amount += u.amount;
-		});
+		pbTransaction.payees = pbTransaction.payees.toString();
+		pbTransaction.payers = pbTransaction.payers.toString();
 
-		trn.payees = _convertSharesToString(trn.payees);
-		trn.payers = _convertSharesToString(trn.payers);
-
-		_model.transactions.push(trn);
+		_model.transactions.push(pbTransaction);
 	};
 
 
