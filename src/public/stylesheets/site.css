@@ -29,7 +29,9 @@ input[type=text]:focus,textarea:focus
 
 .commandbox .command
 {
-	margin:12px 0
+	margin:12px 0;
+	width:400px;
+	display:inline-block
 }
 
 .info-text
@@ -52,10 +54,16 @@ input[type=text]:focus,textarea:focus
 
 .main-button:active
 {
-	background-color:rgb(90, 86, 182)
+	background-color:#5a56b6
 }
 
-ul,ol
+.footer
 {
-	margin:0
+	text-align:center
+}
+
+.footer a
+{
+	font-size:12px;
+	margin:12px
 }

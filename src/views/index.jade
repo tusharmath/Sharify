@@ -19,18 +19,21 @@ html
               | payers :
               span.info-text Specify how the total amount is distributed amongst the users for eg:
                 ol
-                  li a = 100, b = 200, c = 300
-                  li a, b * 2, c * 3
+                  li split in exact amount: a = 100, b = 200, c = 300
+                  li split in ratios: a, b * 2, c * 3
               textarea(rows='2', data-bind='value:payers')
             div.command
               | payees : 
-              span.info-text Same as payers.
               textarea(rows='2', data-bind='value:payees')
             div.command
               | remarks :
-              span.info-text Add some information about the transaction.
+              span.info-text Add some information about the transaction for eg: drinks
               input(type='text', data-bind='value:remarks')
-            input.main-button(type='button', value='Add', data-bind='click : addButton')  
+            div.command
+              input.main-button(type='button', value='Add', data-bind='click : addButton')
+      .footer
+        a(href="/#") Sharify vs others
+        a(href="mailto:tusharmath@gmail.com") Email developer
     //
       LIBRARY
     script(src='scripts/lib/jquery-1.9.1.min.js', type='text/javascript')
