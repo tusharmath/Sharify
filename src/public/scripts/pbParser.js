@@ -141,7 +141,7 @@ var pbParser = function() {
 
 		var tag = _clean(data.tag);
 
-		var remarks = _clean(data.remarks);
+		var remarks = data.remarks;
 		var pbt = new pbTransaction(payers, payees, remarks, tag);
 		return pbt;
 

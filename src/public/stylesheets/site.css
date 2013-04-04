@@ -9,7 +9,7 @@ input[type=text]:focus,textarea:focus
 	outline:none
 }
 
-.commandbox input[type=text],.commandbox textarea
+.content input[type=text],.content textarea
 {
 	font-size:14px;
 	width:100%;
@@ -20,14 +20,14 @@ input[type=text]:focus,textarea:focus
 	font-weight:700
 }
 
-.commandbox
+.content
 {
 	max-width:784px;
 	min-width:300px;
 	margin:0 auto
 }
 
-.commandbox .command
+.content .command
 {
 	margin:12px 0;
 	width:400px;
@@ -60,11 +60,21 @@ input[type=text]:focus,textarea:focus
 .footer
 {
 	text-align:center;
-	margin: 20px
+	margin:20px
 }
 
 .footer a
 {
 	font-size:12px;
 	margin:12px
+}
+
+.transactionList .data-item
+{
+	color:#8e5aac;
+	font-weight:700
+}
+
+.data-block{
+margin: 4px 18px
 }
