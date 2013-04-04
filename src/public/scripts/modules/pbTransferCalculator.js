@@ -1,6 +1,6 @@
-var pbTransferCalculator = function(balances) {
+var pbTransferCalculator = function() {
 	var _finalTransfers = [];
-	var _balances = balances;
+	var _balances;
 
 
 	var minTransferCount = 0;
@@ -47,7 +47,8 @@ var pbTransferCalculator = function(balances) {
 
 	};
 
-	var _solve = function() {
+	var _listTransfers = function() {
+		
 		var bKey = _dichotomizer(_balances);
 		minTransferCount = bKey.payers.length + bKey.payers.length - 1;
 
@@ -66,7 +67,7 @@ var pbTransferCalculator = function(balances) {
 			payees = payees.rotateLeft();
 
 		} while (payees !== null);
-
+		return _finalTransfers;
 	};
 
 
@@ -100,8 +101,13 @@ var pbTransferCalculator = function(balances) {
 		};
 	};
 
+	var _updateBalances = function(balances) {
+		_balances = balances;
+	};
+
 	return {
-		solve: _solve
+		updateBalances: _updateBalances,
+		listTransfers: _listTransfers
 
 	};
 };

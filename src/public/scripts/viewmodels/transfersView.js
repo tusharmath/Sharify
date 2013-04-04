@@ -1,6 +1,6 @@
-var transfersiew = function() {
+var transfersView = function() {
 
-	var _element = $(".transfersView")[0];
+	var _element = $(".transfersList")[0];
 
 	var model = {
 		transfers: ko.observableArray()
@@ -9,7 +9,7 @@ var transfersiew = function() {
 	var _reload = function(transfers) {
 		model.transfers.removeAll();
 		transfers.forEach(function(p) {
-			model.transfers.push(transfers);
+			model.transfers.push(p);
 		});
 	};
 

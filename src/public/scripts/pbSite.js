@@ -7,9 +7,14 @@ var tc = new pbTransferCalculator();
 
 var newTransaction = function(pbTransaction) {
 	tlv.add(pbTransaction);
+
 	bc.addTransaction(pbTransaction);
 	var balances = bc.listBalances("home");
 	bv.reload(balances);
+
+	tc.updateBalances(balances);
+	var transfers = tc.listTransfers();
+	tv.reload(transfers);
 };
 
 var selectTransaction = function(transaction) {
@@ -28,3 +33,6 @@ tlv.onclick_listItem(selectTransaction);
 
 //Initialize balanceView 
 var bv = new balanceView();
+
+//Initialize transfersView
+var tv = new transfersView();

@@ -50,17 +50,18 @@ block content
 	.balanceList
 		ol(data-bind='foreach:balances')
 			li.data-block 			
-				span(data-bind='text:user') 
+				span(data-bind='text:user')
+				|   
 				span.data-item(data-bind='text:amount')
 
 	.sub-title
 		|Transfers
-	.balanceList
+	.transfersList
 		ol(data-bind='foreach:transfers')
 			li.data-block 			
 				span.data-item(data-bind='text:from')
-				| transfers 
+				|  transfers 
 				span.data-item(data-bind='text:amount')
-				| to 
+				|  to 
 				span.data-item(data-bind='text:to')
 				
