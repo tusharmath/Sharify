@@ -40,7 +40,7 @@ var pbTransferCalculator = function() {
 		} while (i != _payees.length);
 
 		var items = _transfers.list();
-		if (items.length < minTransferCount) {
+		if (items.length < minTransferCount || _finalTransfers.length === 0 && items.length == minTransferCount) {
 			minTransferCount = items.length;
 			_finalTransfers = items;
 		}
@@ -48,10 +48,10 @@ var pbTransferCalculator = function() {
 	};
 
 	var _listTransfers = function() {
-		
+
 		var bKey = _dichotomizer(_balances);
 		minTransferCount = bKey.payers.length + bKey.payers.length - 1;
-
+		_finalTransfers.length = 0;
 		var payees = new pbArray(bKey.payees);
 
 		do {
