@@ -1,13 +1,19 @@
+/*
 var pb = new pebbles();
+var calc = new pbTransferCalculator();
+*/
 
 var newTransaction = function(trn) {
 	tlv.add(trn);
 };
 
-var ntv = new newTransactionView(newTransaction);
+var selectTransaction = function(trn) {
+	ntv.load(trn);
+};
+
+var ntv = new newTransactionView();
+ntv.onclick_addButton(newTransaction);
 
 
 var tlv = new transactionListView();
-
-
-var calc = new pbTransferCalculator();
+tlv.onclick_listItem(selectTransaction);

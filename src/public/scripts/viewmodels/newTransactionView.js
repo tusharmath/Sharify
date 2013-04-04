@@ -1,17 +1,21 @@
-var newTransactionView = function(callback) {
+var newTransactionView = function() {
 
 	var _element = $(".commandBox")[0];
 	var _parser = new pbParser();
+	var _callback;
 
+	var _onclick_addButton = function(callback) {
+		_callback = callback;
+	};
 
 	var _addButton = function() {
 
 		var t = ko.toJS(this);
 		var data = _parser.parse(t);
-		callback(data);
+		_callback(data);
 	};
 
-	var _clearAll = function(){};
+	var _clearAll = function() {};
 
 	var _load = function() {
 		//TODO: add implementation
@@ -33,7 +37,8 @@ var newTransactionView = function(callback) {
 	ko.applyBindings(model, _element);
 
 	return {
-		load: _load
+		load: _load,
+		onclick_addButton: _onclick_addButton
 
 	};
 };

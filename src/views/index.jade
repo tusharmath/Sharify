@@ -28,7 +28,7 @@ block content
 
 	.transactionList
 			ol(data-bind='foreach:transactions')
-				li.data-block
+				li.data-block(data-bind='click:$root.onclick')
 					div
 						span tag: 
 						span.data-item(data-bind='text:tag')

@@ -1,12 +1,21 @@
-var transactionListView = function() {
+var transactionListView = function(callback) {
 	var element = $(".transactionList")[0];
+	var _callback;
 
-	var _model = {
-		transactions: ko.observableArray()
+
+
+	var _onClick = function(item) {
+		_callback(item);
 	};
 
-	ko.applyBindings(_model, element);
+	var _model = {
+		transactions: ko.observableArray(),
+		onclick: _onClick
+	};
 
+
+	ko.applyBindings(_model, element);
+	
 
 	var _convertSharesToString = function(items) {
 
@@ -44,10 +53,15 @@ var transactionListView = function() {
 		}
 	};
 
+	var _onClickListItem = function(callback) {
+		_callback = callback;
+	};
+
 	return {
 		add: _add,
 		remove: _remove,
-		reload: _reload
+		reload: _reload,
+		onclick_listItem: _onClickListItem
 
 	};
 };
