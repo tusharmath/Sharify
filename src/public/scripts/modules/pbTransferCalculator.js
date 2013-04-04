@@ -1,12 +1,14 @@
-var pbTransferCalculator = function() {
-	_finalTransfers = [];
+var pbTransferCalculator = function(balances) {
+	var _finalTransfers = [];
+	var _balances = balances;
+
 
 	var minTransferCount = 0;
 
 
 
 	var _addTransfer = function(payees, payers) {
-		
+
 
 		var _transfers = new pbTransfers();
 		var i = 0,
@@ -40,13 +42,13 @@ var pbTransferCalculator = function() {
 		var items = _transfers.list();
 		if (items.length < minTransferCount) {
 			minTransferCount = items.length;
-			_finalTransfers= items;
+			_finalTransfers = items;
 		}
 
 	};
 
-	var _solve = function(balances) {
-		var bKey = _dichotomizer(balances);
+	var _solve = function() {
+		var bKey = _dichotomizer(_balances);
 		minTransferCount = bKey.payers.length + bKey.payers.length - 1;
 
 		var payees = new pbArray(bKey.payees);

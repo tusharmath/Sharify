@@ -14,7 +14,7 @@ var pebbles = function() {
 	};
 
 	var _removeTransaction = function(index) {
-		throw  NotImplementedException();
+		throw NotImplementedException();
 	};
 
 	var updateBalance = function(payShares, balances) {
@@ -68,7 +68,16 @@ var pebbles = function() {
 	};
 
 	var _listTransfers = function(tag) {
+
 		var balances = _listBalances(tag);
+		var calc = new pbTransferCalculator(balances);
+		return calc.solve();
+
+	};
+
+	var _clearTransactions = function() {
+		//TODO: add code
+		throw NotImplementedException();
 
 	};
 
@@ -76,6 +85,7 @@ var pebbles = function() {
 
 		addTransaction: _addTransaction,
 		removeTransaction: _removeTransaction,
+		clearTransactions: _clearTransactions,
 		listTransactions: _listTransactions,
 
 
