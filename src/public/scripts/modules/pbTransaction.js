@@ -21,7 +21,8 @@ var pbTransaction = function(payers, payees, remarks, tag) {
 		var _items = [];
 		for (var i = items.length - 1; i >= 0; i--) {
 			var item = items[i];
-			_items.push(item.user + " = " + item.amount);
+			var amount = item.amount > 0 ? item.amount : -item.amount;
+			_items.push(item.user + "=" + amount);
 
 		}
 		return _items.join(", ");

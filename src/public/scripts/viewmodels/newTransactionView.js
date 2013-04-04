@@ -15,11 +15,19 @@ var newTransactionView = function() {
 		_callback(data);
 	};
 
-	var _clearAll = function() {};
-
-	var _load = function() {
+	var _clearAll = function() {
 		//TODO: add implementation
 		throw NotImplementedException();
+	};
+
+	var _load = function(pbTrn) {
+
+		model.tag(pbTrn.tag);
+		model.amount(pbTrn.amount);
+		model.payers(pbTrn.payers.toString());
+		model.payees(pbTrn.payees.toString());
+		model.remarks(pbTrn.remarks);
+
 	};
 
 	var model = {
