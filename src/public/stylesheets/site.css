@@ -59,7 +59,8 @@ input[type=text]:focus,textarea:focus
 
 .footer
 {
-	text-align:center
+	text-align:center;
+	margin: 20px
 }
 
 .footer a

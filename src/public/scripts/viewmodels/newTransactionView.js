@@ -11,6 +11,8 @@ var newTransactionView = function(callback) {
 		callback(data);
 	};
 
+	var _clearAll = function(){};
+
 	var _load = function() {
 		//TODO: add implementation
 		throw NotImplementedException();
