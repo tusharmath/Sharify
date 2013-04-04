@@ -69,7 +69,7 @@ input[type=text]:focus,textarea:focus
 	margin:12px
 }
 
-.transactionList .data-item
+.data-block .data-item
 {
 	color:#8e5aac;
 	font-weight:700
@@ -78,5 +78,12 @@ input[type=text]:focus,textarea:focus
 .data-block
 {
 	margin:8px 0;
-	cursor: pointer;
+	cursor:pointer
+}
+
+.sub-title
+{
+	font-size:24px;
+	color:#dd5a5a;
+	font-weight:700
 }

@@ -1,6 +1,6 @@
 var balanceView = function() {
 
-	var _element = $(".balanceView")[0];
+	var _element = $(".balanceList")[0];
 
 	var model = {
 		balances: ko.observableArray()
@@ -9,7 +9,7 @@ var balanceView = function() {
 	var _reload = function(balances) {
 		model.balances.removeAll();
 		balances.forEach(function(p) {
-			model.balances.push(balances);
+			model.balances.push(p);
 		});
 	};
 

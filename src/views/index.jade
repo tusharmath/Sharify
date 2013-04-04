@@ -25,23 +25,42 @@ block content
 			input(type='text', data-bind='value:remarks')
 		.command
 			input.main-button(type='button', value='Add', data-bind='click : addButton')
-
+	.sub-title
+		|Transactions
 	.transactionList
-			ol(data-bind='foreach:transactions')
-				li.data-block(data-bind='click:$root.onclick')
-					div
-						span tag: 
-						span.data-item(data-bind='text:tag')
-					div
-						span amount: 
-						span.data-item(data-bind='text:amount')
-					div
-						span payers: 
-						span.data-item(data-bind='text:payers')
-					div
-						span payees: 
-						span.data-item(data-bind='text:payees')
-					div
-						span remarks: 
-						span.data-item(data-bind='text:remarks')
+		ol(data-bind='foreach:transactions')
+			li.data-block(data-bind='click:$root.onclick')
+				div
+					span tag: 
+					span.data-item(data-bind='text:tag')
+				div
+					span amount: 
+					span.data-item(data-bind='text:amount')
+				div
+					span payers: 
+					span.data-item(data-bind='text:payers.toString()')
+				div
+					span payees: 
+					span.data-item(data-bind='text:payees.toString()')
+				div
+					span remarks: 
+					span.data-item(data-bind='text:remarks')
+	.sub-title
+		|Balances
+	.balanceList
+		ol(data-bind='foreach:balances')
+			li.data-block 			
+				span(data-bind='text:user') 
+				span.data-item(data-bind='text:amount')
 
+	.sub-title
+		|Transfers
+	.balanceList
+		ol(data-bind='foreach:transfers')
+			li.data-block 			
+				span.data-item(data-bind='text:from')
+				| transfers 
+				span.data-item(data-bind='text:amount')
+				| to 
+				span.data-item(data-bind='text:to')
+				

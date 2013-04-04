@@ -19,10 +19,6 @@ var transactionListView = function(callback) {
 
 
 	var _add = function(pbTransaction) {
-
-		pbTransaction.payees = pbTransaction.payees.toString();
-		pbTransaction.payers = pbTransaction.payers.toString();
-
 		_model.transactions.push(pbTransaction);
 	};
 

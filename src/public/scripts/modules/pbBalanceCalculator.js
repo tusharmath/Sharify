@@ -1,4 +1,4 @@
-var pebbles = function() {
+var pbBalanceCalculator = function() {
 
 	var transactions = [];
 	//var balances = [];
@@ -66,7 +66,7 @@ var pebbles = function() {
 
 
 	};
-
+	/*
 	var _listTransfers = function(tag) {
 
 		var balances = _listBalances(tag);
@@ -74,7 +74,7 @@ var pebbles = function() {
 		return calc.solve();
 
 	};
-
+*/
 	var _clearTransactions = function() {
 		//TODO: add code
 		throw NotImplementedException();
@@ -84,17 +84,17 @@ var pebbles = function() {
 	return {
 
 		addTransaction: _addTransaction,
-		removeTransaction: _removeTransaction,
+		//removeTransaction: _removeTransaction,
 		clearTransactions: _clearTransactions,
-		listTransactions: _listTransactions,
+		//listTransactions: _listTransactions,
 
 
 
 		listBalances: _listBalances,
 
-		isValidBalance: _isValidBalance,
+		isValidBalance: _isValidBalance
 
-		listTransfers: _listTransfers
+		
 	};
 
 
