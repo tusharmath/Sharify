@@ -1,19 +1,7 @@
 {
 	"folders": [{
-		"path": "public"
-	}, {
-		"path": "routes"
-	}, {
-		"path": "vendor"
-	}, {
-		"path": "views"
-	}, {
-		"path": "package.json"
-	}, {
-		"path": ".gitignore"
-	}, {
-		"path": "Procfile"
-	}, {
-		"path": "app.js"
+		"path": ".",
+		"folder_exclude_patterns": ["node_modules","vendor"],
+		"file_exclude_patterns": ["*.sublime*","*.css"]
 	}]
 }
