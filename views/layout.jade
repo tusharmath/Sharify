@@ -10,13 +10,13 @@ html
 					a.brand(href="#")= title
 					.nav-collapse
 						ul.nav
-							li.active
+							li(data-bind='css:{active:current() == 0},click:onClick.bind($data, 0)')
 								a(href="#create") Create
-							li
+							li(data-bind='css:{active:current() == 1},click:onClick.bind($data, 1)')
 								a(href="#view") View
-							li
+							li(data-bind='css:{active:current() == 2},click:onClick.bind($data, 2)')
 								a(href="#balances") Balances
-							li
+							li(data-bind='css:{active:current() == 3},click:onClick.bind($data, 3)')
 								a(href="#transfers") Transfers
 		.container
 			.hero-unit

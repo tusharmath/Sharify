@@ -4,6 +4,7 @@ var pbViewManager = function() {
 	_views.bv = new balanceView();
 	_views.tv = new transfersView();
 	_views.ntv = new newTransactionView();
+	_views.nv = new navigationView();
 
 	var _showAllBut = function(view) {
 		for (var i in _views) {
