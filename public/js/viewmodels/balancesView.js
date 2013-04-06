@@ -3,7 +3,8 @@ var balanceView = function() {
 	var _element = $(".balanceList")[0];
 
 	var model = {
-		balances: ko.observableArray()
+		balances: ko.observableArray(),
+		isVisble: ko.observable(false)
 	};
 
 	var _reload = function(balances) {
@@ -13,9 +14,19 @@ var balanceView = function() {
 		});
 	};
 
+	var _hide = function() {
+		model.isVisble(false);
+	};
+
+	var _show = function() {
+		model.isVisble(true);
+	};
+
 	ko.applyBindings(model, _element);
 
 	return {
-		reload: _reload
+		reload: _reload,
+		hide: _hide,
+		show: _show
 	};
 };

@@ -10,7 +10,8 @@ var transactionListView = function(callback) {
 
 	var _model = {
 		transactions: ko.observableArray(),
-		onclick: _onClick
+		onclick: _onClick,
+		isVisble: ko.observable(false)
 	};
 
 
@@ -39,11 +40,22 @@ var transactionListView = function(callback) {
 		_callback = callback;
 	};
 
+	var _hide = function() {
+		model.isVisble(false);
+	};
+
+	var _show = function() {
+		model.isVisble(true);
+	};
+
+
 	return {
 		add: _add,
 		remove: _remove,
 		reload: _reload,
-		onclick_listItem: _onClickListItem
+		onclick_listItem: _onClickListItem,
+		hide: _hide,
+		show: _show
 
 	};
 };

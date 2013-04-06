@@ -15,7 +15,7 @@ var newTransactionView = function(alerter) {
 			_callback(data);
 		} catch (e) {
 			alerter.show(e);
-		};
+		}
 
 	};
 
@@ -43,6 +43,7 @@ var newTransactionView = function(alerter) {
 		payees: ko.observable(),
 		remarks: ko.observable(),
 		*/
+		isVisble: ko.observable(false),
 
 		tag: ko.observable("home"),
 
@@ -55,13 +56,22 @@ var newTransactionView = function(alerter) {
 		addButton: _addButton
 	};
 
+	var _hide = function() {
+		model.isVisble(false);
+	};
+
+	var _show = function() {
+		model.isVisble(true);
+	};
 
 
 	ko.applyBindings(model, _element);
 
 	return {
 		load: _load,
-		onclick_addButton: _onclick_addButton
+		onclick_addButton: _onclick_addButton,
+		hide: _hide,
+		show: _show
 
 	};
 };
