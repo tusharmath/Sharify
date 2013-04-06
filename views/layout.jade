@@ -7,19 +7,19 @@ html
 		.navbar.navbar-fixed-top
 			.navbar-inner
 				.container
-					a.brand(href="#")= title
+					a.brand(href="#",data-bind='click:onClick.bind($data, 0)')= title
 					.nav-collapse
 						ul.nav
-							li(data-bind='css:{active:current() == 0},click:onClick.bind($data, 0)')
-								a(href="#create") Create
 							li(data-bind='css:{active:current() == 1},click:onClick.bind($data, 1)')
-								a(href="#view") View
+								a(href="#create") Create
 							li(data-bind='css:{active:current() == 2},click:onClick.bind($data, 2)')
-								a(href="#balances") Balances
+								a(href="#view") View
 							li(data-bind='css:{active:current() == 3},click:onClick.bind($data, 3)')
+								a(href="#balances") Balances
+							li(data-bind='css:{active:current() == 4},click:onClick.bind($data, 4)')
 								a(href="#transfers") Transfers
 		.container
-			.hero-unit
+			.hero-unit(data-bind='visible:isVisible')
 				h1 Welcome to Pebbles!
 				p This is a website helps you manage expenses with multiple people, calculates their net balances and suggests the minimum number of transfers that would be required to clear balances.
 				p

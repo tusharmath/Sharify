@@ -12,7 +12,7 @@ var newTransaction = function(pbTransaction) {
 		vm.tlv.add(pbTransaction);
 
 		bc.addTransaction(pbTransaction);
-		var balances = vbc.listBalances("home");
+		var balances = bc.listBalances("home");
 
 		vm.bv.reload(balances);
 
@@ -33,6 +33,9 @@ var selectTransaction = function(transaction) {
 
 
 //View Manager
-var vm = new pbViewManager();
-vm.ntv.onclick_addButton(newTransaction);
-vm.tlv.onclick_listItem(selectTransaction);
+var settings = {
+	ntv_onclickAddButton: newTransaction,
+	tlv_onclickListItem: selectTransaction,
+	ntv_alerter: ".commandBox .alert"
+};
+var vm = new pbViewManager(settings);

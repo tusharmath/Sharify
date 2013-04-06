@@ -1,8 +1,9 @@
-var newTransactionView = function(alerter) {
+var newTransactionView = function() {
 
 	var _element = $(".commandBox")[0];
 	var _parser = new pbParser();
 	var _callback;
+	var _alerter;
 
 	var _onclick_addButton = function(callback) {
 		_callback = callback;
@@ -14,7 +15,7 @@ var newTransactionView = function(alerter) {
 			var data = _parser.parse(t);
 			_callback(data);
 		} catch (e) {
-			alerter.show(e);
+			_alerter.show(e);
 		}
 
 	};
@@ -63,7 +64,9 @@ var newTransactionView = function(alerter) {
 		model.isVisible(true);
 	};
 
-
+	var _setAlerter = function(alerter) {
+		_alerter = alerter;
+	}
 
 	ko.applyBindings(model, _element);
 
@@ -71,7 +74,8 @@ var newTransactionView = function(alerter) {
 		load: _load,
 		onclick_addButton: _onclick_addButton,
 		hide: _hide,
-		show: _show
+		show: _show,
+		setAlerter: _setAlerter
 
 	};
 };
