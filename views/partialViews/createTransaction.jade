@@ -1,0 +1,49 @@
+div#create.commandBox
+	.page-header
+		h1 Create
+	form.form-horizontal
+		.control-group
+			label.control-label	
+				b Tag:
+			.controls
+				input.input-medium(type='text', placeholder='eg: roomies', data-bind='value:tag')
+				span.help-block Tags are used to group transactions for calculations.
+		.control-group
+			label.control-label	
+				b Amount:
+			.controls
+				input.input-medium(type='text', placeholder='eg: 1000', data-bind='value:amount')
+				span.help-block State the net worth of the transaction.
+		.control-group
+			label.control-label	
+				b Payers:
+			.controls	
+				textarea.input-xlarge(placeholder='eg: ash = 300, poo = 700 or ash, poo, satti * 2 ', rows='2', data-bind='value:payers')
+				span.help-block Determine how the total amount needs to split for payers.
+		.control-group
+			label.control-label	
+				b Payees:
+			.controls
+				textarea.input-xlarge(placeholder='eg: ash = 300, poo = 700 or ash, poo, satti * 2 ', rows='2', data-bind='value:payees')	
+		.control-group
+			label.control-label	
+				b Remarks:
+			.controls
+				input(type='text', placeholder='eg: drinks and food', data-bind='value:remarks')
+				span.help-block Additional information for a transaction.
+		.control-group
+			label.control-label
+			.controls
+				.alert(class='alert-error')
+					button(class='close')
+						&times;
+					strong
+						| Error! 
+					span.msg
+						| This is a sample error message which would look sunny.
+		.control-group
+			label.control-label	
+			.controls
+				button.btn(data-bind='click : addButton') Save
+	hr
+	

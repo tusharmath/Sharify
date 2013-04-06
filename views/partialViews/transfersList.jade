@@ -1,0 +1,14 @@
+div#view.transfersList
+			.page-header
+				h1 Transfers
+				table.table-striped(class='table')
+					thead
+						tr
+							th Person
+							th Owes to
+							th Amount
+					tbody(data-bind='foreach:transfers')
+						tr
+							td(data-bind='text:from')
+							td(data-bind='text:to')
+							td(data-bind='text:amount')
