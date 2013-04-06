@@ -19,30 +19,43 @@ var transactionListView = function(callback) {
 
 
 
-	this.add = function(pbTransaction) {
+	var _add = function(pbTransaction) {
 		_model.transactions.push(pbTransaction);
 	};
 
 
-	this.remove = function(index) {
+	var _remove = function(index) {
 		//TODO: add implementation
 		throw NotImplementedException();
 
 	};
-	this.reload = function(trns) {
+	var _reload = function(trns) {
 		for (var i = trns.length - 1; i >= 0; i--) {
 			var trn = trns[i];
 			_add(trn);
 		}
 	};
 
-	this.onClickListItem = function(callback) {
+	var _onClickListItem = function(callback) {
 		_callback = callback;
 	};
-	this.hide = function() {
-		model.isVisible(false);
+	var _hide = function() {
+		_model.isVisible(false);
 	};
 
-	this.show = function() {
-		model.isVisible(true);
-	};};
+	var _show = function() {
+		_model.isVisible(true);
+	};
+
+
+
+	return {
+		add: _add,
+		remove: _remove,
+		reload: _reload,
+		onclick_listItem: _onClickListItem,
+		hide: _hide,
+		show: _show
+
+	};
+};

@@ -7,21 +7,26 @@ var transfersView = function() {
 		isVisible: ko.observable(false)
 	};
 
-	this.reload = function(transfers) {
+	var _reload = function(transfers) {
 		model.transfers.removeAll();
 		transfers.forEach(function(p) {
 			model.transfers.push(p);
 		});
 	};
 
-	this.hide = function() {
+	var _hide = function() {
 		model.isVisible(false);
 	};
 
-	this.show = function() {
+	var _show = function() {
 		model.isVisible(true);
 	};
 
 	ko.applyBindings(model, _element);
 
+	return {
+		reload: _reload,
+		hide: _hide,
+		show: _show
+	};
 };

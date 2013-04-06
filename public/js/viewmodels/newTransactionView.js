@@ -3,9 +3,8 @@ var newTransactionView = function(alerter) {
 	var _element = $(".commandBox")[0];
 	var _parser = new pbParser();
 	var _callback;
-	var _alerter;
 
-	this.onclick_addButton = function(callback) {
+	var _onclick_addButton = function(callback) {
 		_callback = callback;
 	};
 
@@ -15,7 +14,7 @@ var newTransactionView = function(alerter) {
 			var data = _parser.parse(t);
 			_callback(data);
 		} catch (e) {
-			_alerter.show(e);
+			alerter.show(e);
 		}
 
 	};
@@ -25,7 +24,7 @@ var newTransactionView = function(alerter) {
 		throw NotImplementedException();
 	};
 
-	this.load = function(pbTrn) {
+	var _load = function(pbTrn) {
 
 		model.tag(pbTrn.tag);
 		model.amount(pbTrn.amount);
@@ -56,11 +55,11 @@ var newTransactionView = function(alerter) {
 
 		addButton: _addButton
 	};
-	this.hide = function() {
+	var _hide = function() {
 		model.isVisible(false);
 	};
 
-	this.show = function() {
+	var _show = function() {
 		model.isVisible(true);
 	};
 
@@ -68,8 +67,11 @@ var newTransactionView = function(alerter) {
 
 	ko.applyBindings(model, _element);
 
-	this.setAlerterElement = function(element) {
+	return {
+		load: _load,
+		onclick_addButton: _onclick_addButton,
+		hide: _hide,
+		show: _show
 
-		_alerter = new pbAlerts($(element));
 	};
 };

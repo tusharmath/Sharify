@@ -21,7 +21,7 @@ var newTransaction = function(pbTransaction) {
 
 	} catch (e) {
 		newTransactionAlert.show(e);
-	};
+	}
 };
 
 var selectTransaction = function(transaction) {
@@ -29,18 +29,10 @@ var selectTransaction = function(transaction) {
 };
 
 
-var newTransactionAlert = new pbAlerts($("#create .alert"));
 //Initialize newTransactionView
-var ntv = new newTransactionView(newTransactionAlert);
-ntv.onclick_addButton(newTransaction);
-
-//Initialize transactionListView
-var tlv = new transactionListView();
-tlv.onclick_listItem(selectTransaction);
-
-//Initialize balanceView 
-var bv = new balanceView();
-
-//Initialize transfersView
-var tv = new transfersView();
+var vm = new pbViewManager();
+vm.ntv.onclick_addButton(newTransaction);
+vm.tlv.onclick_listItem(selectTransaction);
+vm.bv = new balanceView();
+vm.tv = new transfersView();
 

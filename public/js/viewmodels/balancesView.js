@@ -7,21 +7,26 @@ var balanceView = function() {
 		isVisible: ko.observable(false)
 	};
 
-	this.reload = function(balances) {
+	var _reload = function(balances) {
 		model.balances.removeAll();
 		balances.forEach(function(p) {
 			model.balances.push(p);
 		});
 	};
 
-	this._hide = function() {
+	var _hide = function() {
 		model.isVisible(false);
 	};
 
-	this._show = function() {
+	var _show = function() {
 		model.isVisible(true);
 	};
 
 	ko.applyBindings(model, _element);
 
+	return {
+		reload: _reload,
+		hide: _hide,
+		show: _show
+	};
 };
