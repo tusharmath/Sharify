@@ -1,9 +1,19 @@
 {
-	"folders":
-	[
-		{
-			"path": "/Users/tusharmathur/Pebbles",
-			"folder_exclude_patterns": ["node_modules", "lib", "vendor"]
-		}
-	]
+	"folders": [{
+		"path": "public"
+	}, {
+		"path": "routes"
+	}, {
+		"path": "vendor"
+	}, {
+		"path": "views"
+	}, {
+		"path": "package.json"
+	}, {
+		"path": ".gitignore"
+	}, {
+		"path": "Procfile"
+	}, {
+		"path": "app.js"
+	}]
 }
