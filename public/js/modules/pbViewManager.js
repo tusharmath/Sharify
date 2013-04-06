@@ -9,8 +9,9 @@ var pbViewManager = function() {
 		for (var i in _views) {
 			if (_views[i] === view) {
 				view.show(true);
+			} else {
+				_views[i].hide(false);
 			}
-			_views[i].hide(false);
 
 		}
 
@@ -18,9 +19,10 @@ var pbViewManager = function() {
 	var _hideAllBut = function(view) {
 		for (var i in _views) {
 			if (_views[i] === view) {
-				view.hide(false);
+				view.hide(true);
+			} else {
+				_views[i].show(false);
 			}
-			_views[i].show(true);
 
 		}
 	};

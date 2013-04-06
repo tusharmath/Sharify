@@ -9,15 +9,18 @@ var newTransaction = function(pbTransaction) {
 	try {
 
 
-		tlv.add(pbTransaction);
+		vm.tlv.add(pbTransaction);
 
 		bc.addTransaction(pbTransaction);
-		var balances = bc.listBalances("home");
-		bv.reload(balances);
+		var balances = vbc.listBalances("home");
+
+		vm.bv.reload(balances);
 
 		tc.updateBalances(balances);
+
 		var transfers = tc.listTransfers();
-		tv.reload(transfers);
+
+		vm.tv.reload(transfers);
 
 	} catch (e) {
 		newTransactionAlert.show(e);
@@ -25,14 +28,11 @@ var newTransaction = function(pbTransaction) {
 };
 
 var selectTransaction = function(transaction) {
-	ntv.load(transaction);
+	vm.ntv.load(transaction);
 };
 
 
-//Initialize newTransactionView
+//View Manager
 var vm = new pbViewManager();
 vm.ntv.onclick_addButton(newTransaction);
 vm.tlv.onclick_listItem(selectTransaction);
-vm.bv = new balanceView();
-vm.tv = new transfersView();
-
