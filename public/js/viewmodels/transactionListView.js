@@ -39,14 +39,14 @@ var transactionListView = function(callback) {
 	var _onClickListItem = function(callback) {
 		_callback = callback;
 	};
-
 	var _hide = function() {
-		model.isVisble(false);
+		model.isVisible(false);
 	};
 
 	var _show = function() {
-		model.isVisble(true);
+		model.isVisible(true);
 	};
+
 
 
 	return {

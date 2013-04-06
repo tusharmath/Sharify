@@ -15,12 +15,13 @@ var transfersView = function() {
 	};
 
 	var _hide = function() {
-		model.isVisble(false);
+		model.isVisible(false);
 	};
 
 	var _show = function() {
-		model.isVisble(true);
+		model.isVisible(true);
 	};
+
 	ko.applyBindings(model, _element);
 
 	return {
