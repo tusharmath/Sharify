@@ -43,7 +43,7 @@ var newTransactionView = function(alerter) {
 		payees: ko.observable(),
 		remarks: ko.observable(),
 		*/
-		isVisble: ko.observable(false),
+		isVisible: ko.observable(false),
 
 		tag: ko.observable("home"),
 

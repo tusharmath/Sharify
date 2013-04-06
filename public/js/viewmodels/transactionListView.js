@@ -11,7 +11,7 @@ var transactionListView = function(callback) {
 	var _model = {
 		transactions: ko.observableArray(),
 		onclick: _onClick,
-		isVisble: ko.observable(false)
+		isVisible: ko.observable(false)
 	};
 
 

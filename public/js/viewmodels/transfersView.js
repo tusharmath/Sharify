@@ -4,7 +4,7 @@ var transfersView = function() {
 
 	var model = {
 		transfers: ko.observableArray(),
-		isVisble: ko.observable(false)
+		isVisible: ko.observable(false)
 	};
 
 	var _reload = function(transfers) {

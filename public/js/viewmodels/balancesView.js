@@ -4,7 +4,7 @@ var balanceView = function() {
 
 	var model = {
 		balances: ko.observableArray(),
-		isVisble: ko.observable(false)
+		isVisible: ko.observable(false)
 	};
 
 	var _reload = function(balances) {
