@@ -22,7 +22,10 @@ html
 			.hero-unit(data-bind='visible:isVisible')
 				h1 Welcome to Pebbles!
 				p This is a website helps you manage expenses with multiple people, calculates their net balances and suggests the minimum number of transfers that would be required to clear balances.
+
 				p
 					a.btn.btn-primary.btn-large(href="#create") Get started >>	
+
+				p= env	
 			block content
 	include scripts

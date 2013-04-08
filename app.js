@@ -52,7 +52,12 @@ app.configure('production', function() {
 
 // Routes
 
-app.get('/', routes.index);
+app.get('/', function(req, res) {
+  res.render("index.jade", {
+    title: "Pebbles",
+    env: app.settings.env
+  });
+});
 
 var port = process.env.PORT || 3000;
 app.listen(port);
