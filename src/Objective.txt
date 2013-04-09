@@ -1,0 +1,27 @@
+~VERSION 1
+. Create complete user interface.
+. CRUD features.
+
+~VERSION 1.1
+
+. All scripts should be concatinated and minified.
+. Offline support should be available on production instances.
+. Build env should be created.
+
+. Email report.
+. Feedback on UI.
+. Enable Caching on Production env.
+. Use local storage to save data.
+. Main icon for the application.
+. LocalStorage
+
+
+
+~VERSION 2
+. Publish all transactions.
+. Email a report
+. Option of donations
+. Add google analytics
+. Buy a domain
+. Add amazing styles.
+. Add Less framework.
