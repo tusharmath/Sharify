@@ -1,12 +1,16 @@
 ~VERSION 1
-. Create complete user interface.
+. Design and implement final UI untill version 2.0
 . CRUD features.
+
 
 ~VERSION 1.1
 
 . All scripts should be concatinated and minified.
 . Offline support should be available on production instances.
 . Build env should be created.
+. Create 2 branches.
+. History API.
+. Enable caching.
 
 . Email report.
 . Feedback on UI.
@@ -17,7 +21,7 @@
 
 
 
-~VERSION 2
+~VERSION 1.2
 . Publish all transactions.
 . Email a report
 . Option of donations

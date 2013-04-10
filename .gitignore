@@ -1,2 +1,4 @@
 *.sublime-workspace
 *.min.*
+*.log
+./node_modules

@@ -2,8 +2,9 @@
 	"name": "Pebbles",
 	"version": "0.0.1",
 	"scripts": {
-		"predeploy": "echo hhhhd"
+		"postinstall": "./node_modules/grunt-cli/bin/grunt"
 	},
+
 	"private": true,
 	"dependencies": {
 
@@ -12,6 +13,7 @@
 		"jade": ">= 0.0.1",
 		"less-middleware": "0.1.x",
 		"grunt-contrib-uglify": "0.2.x",
-		"grunt": "0.4.x"
+		"grunt-cli": "0.1.x"
+
 	}
 }

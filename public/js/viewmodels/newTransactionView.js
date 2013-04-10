@@ -37,23 +37,23 @@ var newTransactionView = function() {
 
 	var model = {
 
+
+
+		isVisible: ko.observable(false),
 		/*
+		tag: ko.observable("home"),
+		amount: ko.observable(6000),
+		payers: ko.observable("a=1000, b=2000, c=3000"),
+		payees: ko.observable("a=500, b=1000, c=1500, d=500, e=2000, f=500"),
+		remarks: ko.observable("this is a sample test"),
+		*/
+		///*
 		tag: ko.observable(),
 		amount: ko.observable(),
 		payers: ko.observable(),
 		payees: ko.observable(),
 		remarks: ko.observable(),
-		*/
-		isVisible: ko.observable(false),
-
-		tag: ko.observable("home"),
-
-		amount: ko.observable(6000),
-		payers: ko.observable("a=1000, b=2000, c=3000"),
-		payees: ko.observable("a=500, b=1000, c=1500, d=500, e=2000, f=500"),
-		remarks: ko.observable("this is a sample test"),
-
-
+		//*/
 		addButton: _addButton
 	};
 	var _hide = function() {
@@ -66,7 +66,7 @@ var newTransactionView = function() {
 
 	var _setAlerter = function(alerter) {
 		_alerter = alerter;
-	}
+	};
 
 	ko.applyBindings(model, _element);
 

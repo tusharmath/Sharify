@@ -1,39 +1,38 @@
 div#create.commandBox(data-bind='visible:isVisible')
 	.page-header
 		h1 Create
-	form.form-horizontal
-		.control-group
-			label.control-label	
+	div
+			div	
 				b Tag:
-			.controls
+			div
 				input.input-medium(type='text', placeholder='eg: roomies', data-bind='value:tag')
 				span.help-block Tags are used to group transactions for calculations.
-		.control-group
-			label.control-label	
+		
+			div	
 				b Amount:
-			.controls
+			div
 				input.input-medium(type='text', placeholder='eg: 1000', data-bind='value:amount')
 				span.help-block State the net worth of the transaction.
-		.control-group
-			label.control-label	
+		
+			div	
 				b Payers:
-			.controls	
+			div	
 				textarea.input-xlarge(placeholder='eg: ash = 300, poo = 700 or ash, poo, satti * 2 ', rows='2', data-bind='value:payers')
 				span.help-block Determine how the total amount needs to split for payers.
-		.control-group
-			label.control-label	
+		
+			div	
 				b Payees:
-			.controls
+			div
 				textarea.input-xlarge(placeholder='eg: ash = 300, poo = 700 or ash, poo, satti * 2 ', rows='2', data-bind='value:payees')	
-		.control-group
-			label.control-label	
+		
+			div	
 				b Remarks:
-			.controls
+			div
 				input(type='text', placeholder='eg: drinks and food', data-bind='value:remarks')
 				span.help-block Additional information for a transaction.
-		.control-group
-			label.control-label
-			.controls
+		
+			div
+			
 				.alert(class='alert-error')
 					button(class='close')
 						&times;
@@ -41,9 +40,9 @@ div#create.commandBox(data-bind='visible:isVisible')
 						| Error! 
 					span.msg
 						| This is a sample error message which would look sunny.
-		.control-group
-			label.control-label	
-			.controls
+		
+			div	
+			
 				button.btn(data-bind='click : addButton') Save
 	hr
 	
