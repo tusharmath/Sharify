@@ -6,16 +6,8 @@ module.exports = function(grunt) {
 					'public/min/site.min.js': ['public/js/*/*.js']
 				}
 			}
-		},
-		watch: {
-			files: ['public/js/*.js'],
-			tasks: ['uglify:dist']
 		}
 	});
-
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-
-	grunt.registerTask('default', [
-		'uglify']);
+	grunt.registerTask('default', ['uglify']);
 };
