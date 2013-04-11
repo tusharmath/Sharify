@@ -1,11 +1,10 @@
 /**
  * Module dependencies.
  */
-var TWITTER_BOOTSTRAP_PATH = '/vendor/twitter/bootstrap/less';
 
 var express = require('express');
 var routes = require('./src/routes');
-var less = require('less-middleware');
+
 
 var app = express();
 
@@ -18,15 +17,7 @@ app.configure(function() {
   app.use(express.methodOverride());
 
   app.use(express.static(__dirname + '/public'));
-
-  app.use(less({
-    src: __dirname + "/public",
-    paths: [__dirname + TWITTER_BOOTSTRAP_PATH]
-  }));
-
   app.use(app.router);
-
-
 });
 
 app.configure('development', function() {
