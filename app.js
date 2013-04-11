@@ -4,7 +4,7 @@
 var TWITTER_BOOTSTRAP_PATH = '/vendor/twitter/bootstrap/less';
 
 var express = require('express');
-var routes = require('./routes');
+var routes = require('./src/routes');
 var less = require('less-middleware');
 
 var app = express();
@@ -12,7 +12,7 @@ var app = express();
 // Configuration
 
 app.configure(function() {
-  app.set('views', __dirname + '/views');
+  app.set('views', __dirname + '/src/views');
   app.set('view engine', 'jade');
   app.use(express.bodyParser());
   app.use(express.methodOverride());
