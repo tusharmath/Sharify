@@ -4,9 +4,10 @@ var keys = {
 			'src/scripts/viewmodels/*.js',
 			'src/scripts/modules/pbSite.js']
 	},
-	lesspath: ["src/less/vendor/twitter/bootstrap/less"],
+	lesspath: ["src/less/vendor/twitter/bootstrap/less",
+		"src/less/custom"],
 	lessfiles: {
-		"public/site.min.css": "src/less/style.less"
+		"public/site.min.css": "src/less/main.less"
 	}
 };
 
@@ -22,7 +23,7 @@ var config = {
 				dest: 'public/dev',
 				expand: true,
 				filter: 'isFile',
-				flatten : true
+				flatten: true
 			}]
 		}
 	},
