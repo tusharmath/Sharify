@@ -2,27 +2,17 @@
 html
 	head
 		title= title
-		link(rel='stylesheet', href='/site.min.css')
+		link(rel='stylesheet', href='/css/site.min.css')
 	body
 		.container-narrow
-			div
-				
+			div.header
 				ul.nav.nav-pills.pull-right
-					li.active
-						a Home
-					li
-						a Transactions
-					li
-						a About
-					li
-						a Contact
-				h1.muted Pebbles
+					li(data-bind='click:onclick')
+						a(href='#Home') Home	
+					li(data-bind='click:onclick')
+						a(href='#Transactions') Transactions
+				h2.muted Pebbles
 			hr
-			.jumbotron
-				h1 Super awesome expense calculator!
-				p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-
-				p
-					a.btn.btn-large.btn-success Create transaction
+			
 			block content
 	include scripts

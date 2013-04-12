@@ -7,7 +7,7 @@ var keys = {
 	lesspath: ["src/less/vendor/twitter/bootstrap/less",
 		"src/less/custom"],
 	lessfiles: {
-		"public/site.min.css": "src/less/main.less"
+		"public/css/site.min.css": "src/less/main.less"
 	}
 };
 
@@ -52,9 +52,12 @@ var config = {
 	},
 	//https://github.com/gruntjs/grunt-contrib-watch
 	watch: {
-		scripts: {
-			files: lesspath,
-			tasks: ['less:dev']
+		lessfiles: {
+			files: keys.lesspath,
+			tasks: ['less:dev'],
+			options: {
+				nospawn: true
+			}
 		}
 	}
 };

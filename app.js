@@ -16,7 +16,8 @@ app.configure(function() {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
 
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + '/public/css'));
+  app.use(express.static(__dirname + '/src/scripts'));
   app.use(app.router);
 });
 

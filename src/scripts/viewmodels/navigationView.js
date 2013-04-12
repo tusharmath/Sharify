@@ -1,5 +1,5 @@
 var navigationView = function() {
-	var _element = $(".navbar")[0];
+	var _element = $(".nav")[0];
 	var _vm;
 	var _onclick = function(index) {
 		_model.current(index);
