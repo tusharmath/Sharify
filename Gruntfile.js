@@ -49,6 +49,13 @@ var config = {
 			},
 			files: keys.lessfiles
 		}
+	},
+	//https://github.com/gruntjs/grunt-contrib-watch
+	watch: {
+		scripts: {
+			files: lesspath,
+			tasks: ['less:dev']
+		}
 	}
 };
 
@@ -57,5 +64,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.registerTask('default', ['uglify:dev', 'less:dev']);
 };
