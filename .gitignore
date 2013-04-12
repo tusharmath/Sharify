@@ -2,3 +2,4 @@
 *.min.*
 *.log
 node_modules
+public
