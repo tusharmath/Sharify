@@ -2,14 +2,14 @@
 html
 	head
 		title= title
-		link(rel='stylesheet', href='/css/site.min.css')
+		link(rel='stylesheet', href='site.min.css')
 	body
 		.container-narrow
 			div.header
 				ul.nav.nav-pills.pull-right
-					li(data-bind='click:onclick')
-						a(href='#Home') Home	
-					li(data-bind='click:onclick')
+					li(data-bind='css:{active:current() == 1},click:onClick.bind($data, 1)')
+						a(href='#Home') Balances	
+					li(data-bind='css:{active:current() == 2},click:onClick.bind($data, 2)')
 						a(href='#Transactions') Transactions
 				h2.muted Pebbles
 			hr

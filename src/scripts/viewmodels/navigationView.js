@@ -3,22 +3,13 @@ var navigationView = function() {
 	var _vm;
 	var _onclick = function(index) {
 		_model.current(index);
-		if (index > 0) $(".hero-unit").hide();
+
 		switch (index) {
-			case 0:
-				$(".hero-unit").show();
-				break;
-			case 1:
-				_vm.showAllBut(vm.ntv);
-				break;
 			case 2:
 				_vm.showAllBut(vm.tlv);
 				break;
-			case 3:
+			case 1:
 				_vm.showAllBut(vm.bv);
-				break;
-			case 4:
-				_vm.showAllBut(vm.tv);
 				break;
 		}
 	};
