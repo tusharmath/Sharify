@@ -1,14 +1,16 @@
 var pbViewManager = function(init) {
 	var _views = {};
+
+	var anc = new pbAnchors();
 	//Create instances
 
 
-	_views.tlv = new transactionListView();
-	_views.bv = new balanceView();
-	_views.tv = new transfersView();
-	_views.ntv = new newTransactionView();
-	_views.nv = new navigationView();
-	_views.spv = new startPageView();
+	_views.tlv = new transactionListView(anc);
+	_views.bv = new balanceView(anc);
+	_views.tv = new transfersView(anc);
+	_views.ntv = new newTransactionView(anc);
+	_views.nv = new navigationView(anc);
+	_views.spv = new startPageView(anc);
 
 
 	var _showAllBut = function(view) {

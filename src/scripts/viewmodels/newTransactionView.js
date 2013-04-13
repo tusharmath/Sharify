@@ -1,4 +1,4 @@
-var newTransactionView = function() {
+var newTransactionView = function(anc) {
 
 	var _element = $(".commandBox")[0];
 	var _parser = new pbParser();

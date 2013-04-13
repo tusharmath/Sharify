@@ -4,7 +4,6 @@ var calc = new pbTransferCalculator();
 */
 var bc = new pbBalanceCalculator();
 var tc = new pbTransferCalculator();
-var anc = new pbAnchors();
 
 var newTransaction = function(pbTransaction) {
 

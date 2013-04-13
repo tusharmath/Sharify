@@ -1,12 +1,14 @@
-var startPageView = function() {
+var startPageView = function(anc) {
 	var _element = $('.jumbotron')[0];
 	var _vm;
-	var _onGetStartedClicked = function() {
+
+	anc.registerRoute('transactions', 'create', function() {
 		_vm.showAllBut(_vm.ntv);
-	};
+	});
+
 	var _model = {
-		isVisible: ko.observable(true),
-		onGetStartedClick: _onGetStartedClicked
+		isVisible: ko.observable(true)
+
 	};
 
 	var _hide = function() {
