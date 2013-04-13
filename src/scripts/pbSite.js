@@ -6,25 +6,21 @@ var bc = new pbBalanceCalculator();
 var tc = new pbTransferCalculator();
 
 var newTransaction = function(pbTransaction) {
-	try {
+
+	vm.tlv.add(pbTransaction);
+
+	bc.addTransaction(pbTransaction);
+	var balances = bc.listBalances("home");
+
+	vm.bv.reload(balances);
+
+	tc.updateBalances(balances);
+
+	//var transfers = tc.listTransfers();
+
+	//vm.tv.reload(transfers);
 
 
-		vm.tlv.add(pbTransaction);
-
-		bc.addTransaction(pbTransaction);
-		var balances = bc.listBalances("home");
-
-		vm.bv.reload(balances);
-
-		tc.updateBalances(balances);
-
-		var transfers = tc.listTransfers();
-
-		vm.tv.reload(transfers);
-
-	} catch (e) {
-		newTransactionAlert.show(e);
-	}
 };
 
 var selectTransaction = function(transaction) {

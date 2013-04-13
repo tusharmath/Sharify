@@ -1,12 +1,14 @@
 div#view.balanceList(data-bind='visible:isVisible')
-			.page-header
-				h1 Balances
-				table.table-striped(class='table')
-					thead
-						tr
-							th Person
-							th Amount
-					tbody(data-bind='foreach:balances')
-						tr
-							td(data-bind='text:user')
-							td(data-bind='text:amount')
+	div(data-bind='foreach:rows')
+		.row-fluid(data-bind='foreach:$data')
+			.span4
+				div
+					h3(data-bind='text:tag') 
+				div(data-bind='foreach:items')
+					span
+						span(data-bind='text:user')
+						span :
+						span(data-bind='text:amount')
+						span $ 
+				div
+					button.btn.btn-info View transfers >>

@@ -28,14 +28,34 @@ var pbBalanceCalculator = function() {
 
 	};
 
-	var _listBalances = function(tag) {
+	var _groupTransactionsByTag = function(transactions) {
+		var tGroup = {};
+		transactions.forEach(function(t) {
+			if (tGroup[t.tag] === undefined) {
+				tGroup[t.tag] = [];
+			}
+			tGroup[t.tag].push(t);
+		});
+
+		return tGroup;
+	};
+
+	var _getAllBalances = function() {
+		var gTrans = _groupTransactionsByTag(transactions);
+		var balances = [];
+		for (var j in gTrans) {
+			var b = _getBalances(gTrans[j]);
+			balances.push(b);
+		}
+		return balances;
+
+	};
+
+	var _getBalances = function(ftrans) {
 
 		var _balances = [];
 
 		//Get list of transactions for a particular tag
-		var ftrans = transactions.filter(function(p) {
-			return p.tag == tag;
-		});
 
 
 		for (var i = 0; i < ftrans.length; i++) {
@@ -53,7 +73,10 @@ var pbBalanceCalculator = function() {
 			});
 		}
 
-		return userAmount;
+		return {
+			tag: ftrans[0].tag,
+			items: userAmount
+		};
 	};
 
 	var _isValidBalance = function(tag) {
@@ -69,7 +92,7 @@ var pbBalanceCalculator = function() {
 	/*
 	var _listTransfers = function(tag) {
 
-		var balances = _listBalances(tag);
+		var balances = _getBalances(tag);
 		var calc = new pbTransferCalculator(balances);
 		return calc.solve();
 
@@ -90,11 +113,11 @@ var pbBalanceCalculator = function() {
 
 
 
-		listBalances: _listBalances,
+		listBalances: _getAllBalances,
 
 		isValidBalance: _isValidBalance
 
-		
+
 	};
 
 
