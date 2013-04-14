@@ -5,10 +5,10 @@ var pbViewManager = function(init) {
 	//Create instances
 
 
-	_views.tlv = new transactionListView(anc);
-	_views.bv = new balanceView(anc);
-	_views.tv = new transfersView(anc);
-	_views.ntv = new newTransactionView(anc);
+	_views.tlv = new transactionListView();
+	_views.bv = new balanceView();
+	_views.tv = new transfersView();
+	_views.ntv = new newTransactionView();
 	//_views.nv = new navigationView(anc);
 	//_views.spv = new startPageView(anc);
 
@@ -55,7 +55,26 @@ var pbViewManager = function(init) {
 	//_views.spv.setViewManager(opr);
 	_views.ntv.setAlerter(new pbAlerts(init.ntv_alerter));
 
+	pbViewManager.registerRoutes(opr, anc);
 	return opr;
 
 
+};
+
+pbViewManager.registerRoutes = function(opr, anc) {
+	anc.registerRoute('transactions', 'create', function() {
+		$('#createTransaction').modal();
+	});
+	anc.registerRoute('transactions', 'edit');
+	anc.registerRoute('transactions', 'delete');
+	anc.registerRoute('transactions', 'index', function() {
+		opr.showAllBut(transactionListView);
+	});
+
+	anc.registerRoute('balances', 'index', function() {
+		$('#balanceView').modal();
+	});
+	anc.registerRoute('');
+	anc.registerRoute('');
+	anc.registerRoute('');
 };

@@ -1,52 +1,52 @@
-div#create.commandBox(data-bind='visible:isVisible')
+//
+	div#create.commandBox(data-bind='visible:isVisible')
+#createTransaction.modal.hide.fade
+	.modal-header
+		button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+		h3 Create Transaction
+	.modal-body
+		form.form-horizontal
+			.control-group
+				label.control-label	
+					b Tag:
+				.controls
+					input.input-medium(type='text', placeholder='eg: roomies', data-bind='value:tag')
+					span.help-block Tags are used to group transactions for calculations.
+			
+			.control-group
+				label.control-label	
+					b Amount:
+				.controls
+					input.input-medium(type='text', placeholder='eg: 1000', data-bind='value:amount')
+					span.help-block State the net worth of the transaction.
+			
+			.control-group
+				label.control-label	
+					b Payers:
+				.controls
+					textarea.input-xlarge(placeholder='eg: ash = 300, poo = 700 or ash, poo, satti * 2 ', rows='2', data-bind='value:payers')
+					span.help-block Determine how the total amount needs to split for payers.
+			
+			.control-group
+				label.control-label	
+					b Payees:
+				.controls
+					textarea.input-xlarge(placeholder='eg: ash = 300, poo = 700 or ash, poo, satti * 2 ', rows='2', data-bind='value:payees')	
+			
+			.control-group
+				label.control-label	
+					b Remarks:
+				.controls
+					input(type='text', placeholder='eg: drinks and food', data-bind='value:remarks')
+					span.help-block Additional information for a transaction.
+	.modal-footer
+		.alert(class='alert-error')
+			button(class='close')
+				&times;
+			strong
+				| Error! 
+			span.msg
+				| This is a sample error message which would look sunny.
+		button.btn.btn-primary(data-bind='click : addButton') Save changes
 
-	
-	form.form-horizontal
-		.control-group
-			label.control-label	
-				b Tag:
-			.controls
-				input.input-medium(type='text', placeholder='eg: roomies', data-bind='value:tag')
-				span.help-block Tags are used to group transactions for calculations.
-		
-		.control-group
-			label.control-label	
-				b Amount:
-			.controls
-				input.input-medium(type='text', placeholder='eg: 1000', data-bind='value:amount')
-				span.help-block State the net worth of the transaction.
-		
-		.control-group
-			label.control-label	
-				b Payers:
-			.controls
-				textarea.input-xlarge(placeholder='eg: ash = 300, poo = 700 or ash, poo, satti * 2 ', rows='2', data-bind='value:payers')
-				span.help-block Determine how the total amount needs to split for payers.
-		
-		.control-group
-			label.control-label	
-				b Payees:
-			.controls
-				textarea.input-xlarge(placeholder='eg: ash = 300, poo = 700 or ash, poo, satti * 2 ', rows='2', data-bind='value:payees')	
-		
-		.control-group
-			label.control-label	
-				b Remarks:
-			.controls
-				input(type='text', placeholder='eg: drinks and food', data-bind='value:remarks')
-				span.help-block Additional information for a transaction.
-		
-		.control-group
-			.controls	
-				.alert(class='alert-error')
-					button(class='close')
-						&times;
-					strong
-						| Error! 
-					span.msg
-						| This is a sample error message which would look sunny.
-		
-			
-			
-				button.btn(data-bind='click : addButton') Save
 	

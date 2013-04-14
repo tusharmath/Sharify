@@ -51,7 +51,7 @@ var config = {
 	//https://github.com/gruntjs/grunt-contrib-watch
 	watch: {
 		lessfiles: {
-			files: keys.lesspath,
+			files: ['src/less/custom/*.*'],
 			tasks: ['less:dev'],
 			options: {
 				nospawn: true

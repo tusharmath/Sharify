@@ -1,6 +1,6 @@
 var newTransactionView = function(anc) {
 
-	var _element = $(".commandBox")[0];
+	var _element = $("#createTransaction")[0];
 	var _parser = new pbParser();
 	var _callback;
 	var _alerter;

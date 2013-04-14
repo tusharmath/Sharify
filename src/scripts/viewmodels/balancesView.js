@@ -1,9 +1,9 @@
 var balanceView = function(anc) {
 
 	var maxcols = 3;
-	var _element = $(".balanceList")[0];
+	var _element = $("#balanceView")[0];
 
-	
+
 	var model = {
 		rows: ko.observableArray(),
 		isVisible: ko.observable(false)
