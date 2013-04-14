@@ -8,22 +8,20 @@ var keys = {
 		"src/less/custom"],
 	lessfiles: {
 		"public/css/site.min.css": "src/less/main.less"
-	}
+	},
+	imgpath: ['src/images/*.*']
 };
 
 var config = {
 	//https://github.com/gruntjs/grunt-contrib-copy
 	copy: {
-		main: {
+		images: {
 			files: [{
-				src: ['src/scripts/*',
-					'src/scripts/lib/*',
-					'src/scripts/modules/*',
-					'src/scripts/viewmodels/*'],
-				dest: 'public/dev',
-				expand: true,
+				src: keys.imgpath,
+				dest: 'public/img/',
 				filter: 'isFile',
-				flatten: true
+				flatten: true,
+				expand: true
 			}]
 		}
 	},
@@ -57,7 +55,15 @@ var config = {
 			tasks: ['less:dev'],
 			options: {
 				nospawn: true
+			},
+			imagefiles: {
+				files: keys.imgpath,
+				tasks: ['copy:imgges'],
+				options: {
+					nospawn: true
+				}
 			}
+
 		}
 	}
 };

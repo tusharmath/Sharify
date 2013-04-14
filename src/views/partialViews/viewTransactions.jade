@@ -1,4 +1,13 @@
 div#view.transactionList(data-bind='visible:isVisible')
+				.btn-toolbar.pull-right
+					.btn-group
+						a.btn(href='transactions/create')
+							i.icon-plus
+						a.btn(href='#')
+							i.icon-edit
+						a.btn(href='#')
+							i.icon-trash
+						
 				table.table-striped(class='table')
 					thead
 						tr
