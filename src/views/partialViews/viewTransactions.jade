@@ -1,26 +1,34 @@
 div#view.transactionList(data-bind='visible:isVisible')
+	.btn-toolbar.pull-right
+		.btn-group
+			a.btn(href='transactions/create')
+				i.icon-plus
+			a.disabled.btn(href='#')
+				i.icon-edit
+			a.disabled.btn(href='#')
+				i.icon-trash
+			a.btn(href='balances') Balances
+	div.clearfix
+	div(data-bind='foreach:transactions')
+		div.transaction-block
+			div
+				span 
+					b Tag: 
+					span(data-bind='text:tag')
+			div	
+				span 
+					b Amount: 
+					span(data-bind='text:amount')
+			div
+				span 
+					b Creditors: 
+					span(data-bind='text:payers.toString()')
+			div
+				span
+					b Debitors: 
+					span(data-bind='text:payees.toString()')
 			
-				.btn-toolbar.pull-right
-					.btn-group
-						a.btn(href='transactions/create')
-							i.icon-plus
-						a.disabled.btn(href='#')
-							i.icon-edit
-						a.disabled.btn(href='#')
-							i.icon-trash
-						a.btn(href='balances') Balances
-				table.table-striped(class='table')
-					thead
-						tr
-							th Tag
-							th Amount
-							th Payers
-							th Payees
-							th Remarks
-					tbody(data-bind='foreach:transactions')
-						tr
-							td(data-bind='text:tag')
-							td(data-bind='text:amount')
-							td(data-bind='text:payers.toString()')
-							td(data-bind='text:payees.toString()')
-							td(data-bind='text:remarks')
+			div
+				span
+					b Remarks: 
+					span(data-bind='text:remarks')
