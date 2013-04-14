@@ -1,6 +1,6 @@
 var balanceView = function(anc) {
 
-	var maxcols = 3;
+	var maxcols = 2;
 	var _element = $("#balanceView")[0];
 
 
