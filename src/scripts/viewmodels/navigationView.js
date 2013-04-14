@@ -1,4 +1,5 @@
 var navigationView = function(anc) {
+	return
 	var _element = $(".nav")[0];
 	var _vm;
 

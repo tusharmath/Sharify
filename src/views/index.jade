@@ -1,10 +1,5 @@
 extends layout
 block content
-	.jumbotron(data-bind='visible:isVisible')
-		h1 Super awesome expense calculator!
-		p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-		p
-			a.btn.btn-large.btn-success(href='transactions/create') Create Transaction
 	include partialViews/createTransaction
 	include partialViews/viewTransactions
 	include partialViews/balances

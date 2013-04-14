@@ -6,15 +6,6 @@ html
 	body
 		.container-narrow
 			div.header
-				ul.nav.nav-pills.pull-right
-					li(data-bind='css:{active: current() == 0}')
-						a(href='Home') Home
-					li(data-bind='css:{active: current() == 1}')
-						a(href='Balances') Balances	
-					li(data-bind='css:{active: current() == 2}')
-						a(href='Transactions') Transactions
 				h2.muted Pebbles
-			hr
-			
 			block content
 	include scripts

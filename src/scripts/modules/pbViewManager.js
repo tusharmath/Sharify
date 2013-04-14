@@ -9,8 +9,8 @@ var pbViewManager = function(init) {
 	_views.bv = new balanceView(anc);
 	_views.tv = new transfersView(anc);
 	_views.ntv = new newTransactionView(anc);
-	_views.nv = new navigationView(anc);
-	_views.spv = new startPageView(anc);
+	//_views.nv = new navigationView(anc);
+	//_views.spv = new startPageView(anc);
 
 
 	var _showAllBut = function(view) {
@@ -51,8 +51,8 @@ var pbViewManager = function(init) {
 	//Set parameters
 	_views.ntv.onclick_addButton(init.ntv_onclickAddButton);
 	_views.tlv.onclick_listItem(init.tlv_onclickListItem);
-	_views.nv.setViewManager(opr);
-	_views.spv.setViewManager(opr);
+	//_views.nv.setViewManager(opr);
+	//_views.spv.setViewManager(opr);
 	_views.ntv.setAlerter(new pbAlerts(init.ntv_alerter));
 
 	return opr;
