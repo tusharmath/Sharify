@@ -5,8 +5,9 @@ var calc = new pbTransferCalculator();
 var bc = new pbBalanceCalculator();
 var tc = new pbTransferCalculator();
 
-var newTransaction = function(pbTransaction) {
 
+var newTransaction = function(pbTransaction) {
+	stg.add(pbStorage.keys.TRANSACTIONS, pbTransaction);
 	vm.tlv.add(pbTransaction);
 
 	bc.addTransaction(pbTransaction);

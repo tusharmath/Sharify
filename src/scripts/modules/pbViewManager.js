@@ -2,6 +2,7 @@ var pbViewManager = function(init) {
 	var _views = {};
 
 	var anc = new pbAnchors();
+	var stg = new pbStorage();
 	//Create instances
 
 
@@ -54,6 +55,7 @@ var pbViewManager = function(init) {
 	//_views.nv.setViewManager(opr);
 	//_views.spv.setViewManager(opr);
 	_views.ntv.setAlerter(new pbAlerts(init.ntv_alerter));
+	_views.ntv.setStorage(stg);
 
 	pbViewManager.registerRoutes(opr, anc);
 	return opr;

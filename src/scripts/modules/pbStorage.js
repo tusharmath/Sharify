@@ -2,23 +2,40 @@ var pbStorage = function() {
 
 	var ls = window.localStorage;
 	var savedData = 'savedData';
-	var _data = ls.getItem(savedData) === null ? {} : ls.getItem(savedData);
+
+	var _getData = function() {
+		var _data = ls.getItem(savedData) === null ? {} : ls.getItem(savedData);
+	};
 
 
-	var _set = function(key, data) {
 
-		_data[key] = data;
+	var _add = function(key, data) {
+
+		if (_data[key].length === 0) {
+			_data[key] = [];
+		}
+		_data[key].push(data);
 
 		var jsonData = JSON.stringify(_data);
 
 		ls.setItem(savedData, jsonData);
 	};
 
-	var _get = function(key) {
-		return _data[key];
+	var _remove = function(key, index) {
+
+		_data[key] = _data.splice(index);
+
+		var jsonData = JSON.stringify(_data);
+
+		ls.setItem(savedData, jsonData);
+	};
+
+	var _get = function() {
+		return _data;
 	};
 	return {
-		set: _set,
+		add: _add,
+		remove: _remove,
 		get: _get
 	};
 };
