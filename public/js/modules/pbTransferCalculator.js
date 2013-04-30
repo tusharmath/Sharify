@@ -50,7 +50,7 @@ var pbTransferCalculator = function() {
 	var _listTransfers = function() {
 
 		var bKey = _dichotomizer(_balances);
-		minTransferCount = bKey.payers.length + bKey.payers.length - 1;
+		minTransferCount = bKey.payees.length + bKey.payers.length - 1;
 		_finalTransfers.length = 0;
 		var payees = new pbArray(bKey.payees);
 
