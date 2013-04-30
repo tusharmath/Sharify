@@ -125,12 +125,12 @@ var pbParser = function() {
 
 	var _parser = function(data) {
 		var amount = _clean(data.amount);
-		var payerShares = _createUserShare(data.payers, amount);
+		var payerShares = _createUserShare(data.payers.toLowerCase(), amount);
 		if (amount != payerShares.amount) {
 			throw InvalidBalancesException();
 		}
 
-		var payeeShares = _createUserShare(data.payees, -payerShares.amount);
+		var payeeShares = _createUserShare(data.payees.toLowerCase(), -payerShares.amount);
 
 		if (payerShares.amount + payeeShares.amount !== 0) {
 			throw InvalidBalancesException();
