@@ -127,7 +127,7 @@ var pbParser = function() {
 		var amount = _clean(data.amount);
 		var payerShares = _createUserShare(data.payers.toLowerCase(), amount);
 		if (amount != payerShares.amount) {
-			throw InvalidBalancesException();
+			throw BalanceMismatchException(payerShares.amount, amount);
 		}
 
 		var payeeShares = _createUserShare(data.payees.toLowerCase(), -payerShares.amount);
