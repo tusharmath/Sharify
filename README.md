@@ -1,6 +1,8 @@
 Sharify
 =======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tusharmath/Sharify.svg)](https://greenkeeper.io/)
+
 This is web application which will help you in managing expenses by
 
 1. Creating transactions.
